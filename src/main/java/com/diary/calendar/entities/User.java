@@ -2,12 +2,27 @@ package com.diary.calendar.entities;
 
 import com.diary.calendar.enums.UserRole;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-public class User extends AbstractEntity {
+@Entity
+public class User {
     
+    @Id
+    @GeneratedValue
+    private Long id;
     private String name;
     private List<Phone> phones;
     private UserRole role;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

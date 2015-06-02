@@ -1,11 +1,26 @@
 package com.diary.calendar.entities;
 
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-public class Record extends AbstractEntity {
+@Entity
+public class Record {
     
+    @Id
+    @GeneratedValue
+    private Long id;
     private User user;
     private List<Operation> operations;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public User getUser() {
         return user;
