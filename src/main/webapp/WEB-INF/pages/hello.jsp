@@ -11,5 +11,6 @@
     </head>
     <body>
         <h1>Message : ${message}</h1>
+        <hr/>
     </body>
 </html>
