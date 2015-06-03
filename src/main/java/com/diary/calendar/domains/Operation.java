@@ -1,8 +1,12 @@
-package com.diary.calendar.entities;
+package com.diary.calendar.domains;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Operation{
@@ -13,6 +17,10 @@ public class Operation{
     private String name;
     private String description;
     private Double duration;
+    
+    @JoinColumn(name = "recordId")
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Record record;
     
     public Long getId() {
         return id;
@@ -44,6 +52,14 @@ public class Operation{
 
     public void setDuration(Double duration) {
         this.duration = duration;
+    }
+
+    public Record getRecord() {
+        return record;
+    }
+
+    public void setRecord(Record record) {
+        this.record = record;
     }
 
 }
