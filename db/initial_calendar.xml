@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+	
+    <changeSet author="rpadalka" id="20150604-1">
+		<preConditions onFail="MARK_RAN" onFailMessage="User calendar already exists">
+			<sqlCheck expectedResult="0">SELECT COUNT(1) FROM pg_user WHERE usename = 'calendar'</sqlCheck>
+		</preConditions>
+		<comment>пользователь calendar</comment>
+		<sql>create user calendar password 'calendar'</sql>
+		<rollback>DROP user calendar</rollback>
+    </changeSet>
+
+    <changeSet author="rpadalka" id="20150604-2">
+		<preConditions onFail="MARK_RAN" onFailMessage="User calendar_rw already exists">
+			<sqlCheck expectedResult="0">SELECT COUNT(1) FROM pg_user WHERE usename = 'calendar_rw'</sqlCheck>
+		</preConditions>
+		<comment>пользователь calendar_rw</comment>
+		<sql>create user calendar_rw password 'calendar_rw'</sql>
+		<rollback>DROP user calendar_rw</rollback>
+    </changeSet>
+
+    <changeSet author="rpadalka" id="20150604-3" runInTransaction="false">
+		<preConditions onFail="MARK_RAN" onFailMessage="Tablespace calendar_tbs already exists">
+			<sqlCheck expectedResult="0">SELECT COUNT(1) FROM pg_tablespace where spcname = 'calendar_tbs'</sqlCheck>
+		</preConditions>
+		<comment>табличное пространство calendar_tbs</comment>
+		<sql>create tablespace calendar_tbs owner calendar location '/u01/calendar'</sql>
+		<rollback>DROP tablespace calendar_tbs</rollback>
+    </changeSet>
+
+    <changeSet author="rpadalka" id="20150604-4" runInTransaction="false">
+		<preConditions onFail="MARK_RAN" onFailMessage="Database calendar_db already exists">
+			<sqlCheck expectedResult="0">SELECT COUNT(1) FROM pg_database where datname = 'calendar_db'</sqlCheck>
+		</preConditions>
+		<comment>база данных calendar_db</comment>
+		<sql>create database calendar_db owner calendar tablespace calendar_tbs</sql>
+		<rollback>DROP database calendar_db</rollback>
+    </changeSet>
+
+    <changeSet author="rpadalka" id="20150604-5">
+		<comment>гранты на поключение к calendar_db для calendar_rw</comment>
+		<sql>grant connect on database calendar_db to calendar_rw</sql>
+		<rollback>revoke connect on database calendar_db from calendar_rw</rollback>
+    </changeSet>
+
+    <changeSet author="rpadalka" id="20150604-6">
+		<comment>отбор public грантов на поключение к calendar_db</comment>
+		<sql>revoke connect on database calendar_db from public</sql>
+		<rollback>grant connect on database calendar_db to public</rollback>
+    </changeSet>
+
+</databaseChangeLog>
