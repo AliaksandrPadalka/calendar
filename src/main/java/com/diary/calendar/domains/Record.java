@@ -1,5 +1,6 @@
 package com.diary.calendar.domains;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,18 +17,18 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "records")
-public class Record {
-    
+public class Record implements Serializable {
+
     @Id
-    @SequenceGenerator(name="pk_sequence",sequenceName="entity_id_seq", allocationSize=1)
+    @SequenceGenerator(name = "pk_sequence", sequenceName = "entity_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
-    @Column(name="recordId")
+    @Column(name = "recordId")
     private Long id;
-    
+
     @JoinColumn(name = "userId")
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private User user;
-    
+
     @OneToMany(mappedBy = "record", fetch = FetchType.LAZY, targetEntity = Operation.class)
     private List<Operation> operations;
 

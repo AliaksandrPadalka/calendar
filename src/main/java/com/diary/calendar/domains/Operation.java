@@ -1,5 +1,6 @@
 package com.diary.calendar.domains;
 
+import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,27 +15,27 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "operations")
-public class Operation{
+public class Operation implements Serializable {
 
     @Id
-    @SequenceGenerator(name="pk_sequence",sequenceName="entity_id_seq", allocationSize=1)
+    @SequenceGenerator(name = "pk_sequence", sequenceName = "entity_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
-    @Column(name="operationId")
+    @Column(name = "operationId")
     private Long id;
-    
-    @Column(name="name")
+
+    @Column(name = "name")
     private String name;
-    
-    @Column(name="description")
+
+    @Column(name = "description")
     private String description;
-    
-    @Column(name="duration")
+
+    @Column(name = "duration")
     private Double duration;
-    
+
     @JoinColumn(name = "recordId")
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Record record;
-    
+
     public Long getId() {
         return id;
     }
@@ -42,7 +43,7 @@ public class Operation{
     public void setId(Long id) {
         this.id = id;
     }
-    
+
     public String getName() {
         return name;
     }

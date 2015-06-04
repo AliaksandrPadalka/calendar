@@ -1,6 +1,7 @@
 package com.diary.calendar.domains;
 
 import com.diary.calendar.enums.UserRole;
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,24 +17,24 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
-public class User {
-    
+public class User implements Serializable {
+
     @Id
-    @SequenceGenerator(name="pk_sequence",sequenceName="entity_id_seq", allocationSize=1)
+    @SequenceGenerator(name = "pk_sequence", sequenceName = "entity_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
-    @Column(name="userId")
+    @Column(name = "userId")
     private Long id;
-    
-    @Column(name="name")
+
+    @Column(name = "name")
     private String name;
-    
+
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, targetEntity = Phone.class)
     private List<Phone> phones;
-    
-    @Column(name="role")
+
+    @Column(name = "userRole")
     @Enumerated(EnumType.STRING)
     private UserRole role;
-    
+
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, targetEntity = Record.class)
     private List<Record> records;
 

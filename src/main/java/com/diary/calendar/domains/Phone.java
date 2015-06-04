@@ -1,6 +1,7 @@
 package com.diary.calendar.domains;
 
 import com.diary.calendar.enums.PhoneType;
+import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,24 +18,24 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "phones")
-public class Phone {
+public class Phone implements Serializable {
 
     @Id
-    @SequenceGenerator(name="pk_sequence",sequenceName="entity_id_seq", allocationSize=1)
+    @SequenceGenerator(name = "pk_sequence", sequenceName = "entity_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
-    @Column(name="phoneId")
+    @Column(name = "phoneId")
     private Long id;
-    
-    @Column(name="type")
+
+    @Column(name = "type")
     @Enumerated(EnumType.STRING)
     private PhoneType type;
-    
-    @Column(name="code")
+
+    @Column(name = "code")
     private String code;
-    
-    @Column(name="number")
+
+    @Column(name = "number")
     private String number;
-    
+
     @JoinColumn(name = "userId")
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private User user;
@@ -78,5 +79,5 @@ public class Phone {
     public void setUser(User user) {
         this.user = user;
     }
-    
+
 }
