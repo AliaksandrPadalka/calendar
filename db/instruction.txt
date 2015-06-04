@@ -1,5 +1,5 @@
 1.
-ПРИ ПЕРВОМ ЗАПУСКЕ создать на сервере с базой каталог /u01/privfast. Владельцем каталога должен быть пользователь базы (по-умолчанию это postgres).
+ПРИ ПЕРВОМ ЗАПУСКЕ создать на сервере с базой каталог /u01/calendar. Владельцем каталога должен быть пользователь базы (по-умолчанию это postgres).
 
 2.
 Linux only. Make files executable by running:
@@ -18,4 +18,3 @@ Example:
 sh apply_calendar.sh jdbc:postgresql://192.168.1.200:5432 postgres postgres
 OR
 ./apply_calendar.sh jdbc:postgresql://192.168.1.200:5432 postgres postgres
-	
