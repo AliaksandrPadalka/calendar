@@ -4,6 +4,8 @@ import com.diary.calendar.enums.UserRole;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,10 +23,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
     @Column(name="userId")
     private Long id;
+    
+    @Column(name="name")
     private String name;
+    
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, targetEntity = Phone.class)
     private List<Phone> phones;
+    
+    @Column(name="role")
+    @Enumerated(EnumType.STRING)
     private UserRole role;
+    
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, targetEntity = Record.class)
     private List<Record> records;
 

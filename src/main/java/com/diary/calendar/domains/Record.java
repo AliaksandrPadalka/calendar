@@ -23,9 +23,11 @@ public class Record {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
     @Column(name="recordId")
     private Long id;
+    
     @JoinColumn(name = "userId")
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private User user;
+    
     @OneToMany(mappedBy = "record", fetch = FetchType.LAZY, targetEntity = Operation.class)
     private List<Operation> operations;
 

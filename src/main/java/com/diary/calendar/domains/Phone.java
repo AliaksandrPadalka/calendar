@@ -4,6 +4,8 @@ import com.diary.calendar.enums.PhoneType;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,8 +24,15 @@ public class Phone {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
     @Column(name="phoneId")
     private Long id;
+    
+    @Column(name="type")
+    @Enumerated(EnumType.STRING)
     private PhoneType type;
+    
+    @Column(name="code")
     private String code;
+    
+    @Column(name="number")
     private String number;
     
     @JoinColumn(name = "userId")

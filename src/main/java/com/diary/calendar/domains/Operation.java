@@ -21,8 +21,14 @@ public class Operation{
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
     @Column(name="operationId")
     private Long id;
+    
+    @Column(name="name")
     private String name;
+    
+    @Column(name="description")
     private String description;
+    
+    @Column(name="duration")
     private Double duration;
     
     @JoinColumn(name = "recordId")
