@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<preConditions>
+		<dbms type="postgresql" />
+	</preConditions>	
+
+    <changeSet author="rpadalka" id="20150604-1">
+		<preConditions onFail="MARK_RAN" onFailMessage="User calendar_ro already exists">
+			<sqlCheck expectedResult="0">SELECT COUNT(1) FROM pg_user WHERE usename = 'calendar_ro'</sqlCheck>
+		</preConditions>
+		<comment>создаем ro пользователя</comment>
+		<sql>create user calendar_ro password 'calendar_ro'</sql>
+		<rollback>DROP user calendar_ro</rollback>
+    </changeSet>
+
+    <changeSet author="rpadalka" id="20150604-2"  runAlways="true">
+		<comment>раздаем права</comment>
+		<sql>grant connect on database calendar_db to calendar_ro</sql>
+		<sql>grant usage on schema calendar_sm to calendar_ro</sql>
+		<sql>grant select on all tables in schema calendar_sm to calendar_ro</sql>
+		<rollback>revoke select on all tables in schema calendar_sm from calendar_ro</rollback>
+		<rollback>revoke usage on schema calendar_sm from calendar_ro</rollback>
+		<rollback>revoke connect on database calendar_db from calendar_ro</rollback>
+    </changeSet>
+	
+    <changeSet author="rpadalka" id="20150604-3">
+		<comment>задаем тейблспейс</comment>
+		<sql>alter user calendar_ro SET default_tablespace = calendar_tbs</sql>
+		<rollback>alter user calendar_ro SET default_tablespace = pg_default</rollback>
+    </changeSet>
+
+    <changeSet author="rpadalka" id="20150604-4">
+		<comment>задаем схему</comment>
+		<sql>alter user calendar_ro SET search_path = calendar_sm,public</sql>
+		<rollback>alter user calendar_ro SET search_path = public</rollback>
+    </changeSet>
+	
+</databaseChangeLog>
+
+

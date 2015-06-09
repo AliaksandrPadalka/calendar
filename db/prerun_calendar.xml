@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+	
+	<preConditions>
+		<dbms type="postgresql" />
+	</preConditions>	
+	
+    <changeSet author="rpadalka" id="20150604-1">
+		<comment>Схема Program</comment>
+		<sql>
+	    	CREATE SCHEMA IF NOT EXISTS calendar_sm AUTHORIZATION calendar;
+	    	GRANT USAGE ON SCHEMA calendar_sm TO calendar_rw;
+		</sql>
+		<rollback>
+		    DROP SCHEMA calendar_sm;
+		</rollback>
+    </changeSet>
+	
+    <changeSet author="rpadalka" id="20150604-2">
+		<comment>прописываем для пользователя calendar дефолтовое табличное пространство</comment>
+		<sql>alter user calendar SET default_tablespace = calendar_tbs</sql>
+		<rollback>alter user calendar SET default_tablespace = pg_default</rollback>
+    </changeSet>
+	
+    <changeSet author="rpadalka" id="20150604-3">
+		<comment>прописываем для пользователя calendar схему calendar_sm</comment>
+		<sql>alter user calendar SET search_path = calendar_sm,public</sql>
+		<rollback>alter user calendar SET search_path = public</rollback>
+    </changeSet>
+	
+    <changeSet author="rpadalka" id="20150604-4">
+		<comment>прописываем для пользователя calendar_rw дефолтовое табличное пространство</comment>
+		<sql>alter user calendar_rw SET default_tablespace = calendar_tbs</sql>
+		<rollback>alter user calendar_rw SET default_tablespace = pg_default</rollback>
+    </changeSet>
+	
+    <changeSet author="rpadalka" id="20150604-5">
+		<comment>прописываем для пользователя calendar_rw схему calendar_sm</comment>
+		<sql>alter user calendar_rw SET search_path = calendar_sm,public</sql>
+		<rollback>alter user calendar_rw SET search_path = public</rollback>
+    </changeSet>
+	
+    <changeSet author="rpadalka" id="20150604-6">
+        <comment>Создание расширения postgres_fdw для работы с врапером</comment>
+        <sql>CREATE EXTENSION IF NOT EXISTS postgres_fdw</sql>
+        <rollback>DROP EXTENSION IF EXISTS postgres_fdw</rollback>
+    </changeSet>
+</databaseChangeLog>
+
+

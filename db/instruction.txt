@@ -1,0 +1,20 @@
+1.
+ПРИ ПЕРВОМ ЗАПУСКЕ создать на сервере с базой каталог /u01/calendar. Владельцем каталога должен быть пользователь базы (по-умолчанию это postgres).
+
+2.
+Linux only. Make files executable by running:
+$chmod +x mk_exec.sh
+$./mk_exec.sh
+
+3.
+run apply script with two parameters: "jdbc-connection string without database name without slash sign at the end" and "postgres user password":
+- run bat-file (Windows)
+	apply_calendar.bat	connection_string	password	[userName]	for update DB
+	
+- run sh-file (*nix)
+	apply_calendar.sh	connection_string	password	[userName]	for update DB
+	
+Example:
+sh apply_calendar.sh jdbc:postgresql://192.168.1.200:5432 postgres postgres
+OR
+./apply_calendar.sh jdbc:postgresql://192.168.1.200:5432 postgres postgres
