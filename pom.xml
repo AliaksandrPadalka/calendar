@@ -41,6 +41,7 @@
         <!-- Plugins versions -->
         <maven.compiler.version>2.3.2</maven.compiler.version>
         <maven.dependency.version>2.10</maven.dependency.version>
+        <liquibase.maven.version>3.3.5</liquibase.maven.version>
     </properties>
 
     <profiles>
@@ -246,6 +247,26 @@
                         </fileset>
                     </filesets>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>${liquibase.maven.version}</version>
+                <configuration>
+                    <changeLogFile>${assembly-directory}/db/master_calendar.xml</changeLogFile>
+                    <driver>org.postgresql.Driver</driver>
+                    <url>jdbc:postgresql://localhost:5432/postgres</url>
+                    <username>postgres</username>
+                    <password>postgres</password>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>update</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
