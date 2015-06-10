@@ -13,6 +13,7 @@
         <!-- project properies -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.7</java.version>
+        <assembly-directory>${basedir}</assembly-directory>
 
         <!-- Dependencies versions -->
         <org.springframework.version>4.1.6.RELEASE</org.springframework.version>
@@ -26,8 +27,11 @@
         <javax.servlet.version>3.1.0</javax.servlet.version>
         <javax.validation.version>1.1.0.Final</javax.validation.version>
         <org.hibernate.hibernate-entitymanager.version>4.3.10.Final</org.hibernate.hibernate-entitymanager.version>
-        <org.postgresql.postgresql.version>9.4-1201-jdbc41</org.postgresql.postgresql.version>
+        <org.postgresql.postgresql.version>9.4-1201</org.postgresql.postgresql.version>
+        <org.postgresql.postgresql.driver.version>jdbc41</org.postgresql.postgresql.driver.version>
+        <org.hibernate.hibernate-entitymanager.version>4.3.1.Final</org.hibernate.hibernate-entitymanager.version>
         <org.hibernate.hibernate-jpa-api.version>1.0.0.Final</org.hibernate.hibernate-jpa-api.version>
+        <org.liquibase.liquibase-core.version>3.3.5</org.liquibase.liquibase-core.version>
 
         <!-- CSS and Javascript versions -->
         <jquery.version>1.11.1</jquery.version>
@@ -36,6 +40,7 @@
 
         <!-- Plugins versions -->
         <maven.compiler.version>2.3.2</maven.compiler.version>
+        <maven.dependency.version>2.10</maven.dependency.version>
     </properties>
 
     <profiles>
@@ -98,7 +103,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>4.3.1.Final</version>
+            <version>${org.hibernate.hibernate-entitymanager.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
@@ -108,7 +113,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>${org.postgresql.postgresql.version}</version>
+            <version>${org.postgresql.postgresql.version}-${org.postgresql.postgresql.driver.version}</version>
         </dependency>
 
         <!-- Logging dependency -->
@@ -173,6 +178,67 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${maven.dependency.version}</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.postgresql</groupId>
+                                    <artifactId>postgresql</artifactId>
+                                    <version>${org.postgresql.postgresql.version}-${org.postgresql.postgresql.driver.version}</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${assembly-directory}/db/lib</outputDirectory>
+                                    <destFileName>postgresql-${org.postgresql.postgresql.version}.${org.postgresql.postgresql.driver.version}.jar</destFileName>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.liquibase</groupId>
+                                    <artifactId>liquibase-core</artifactId>
+                                    <version>${org.liquibase.liquibase-core.version}</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${assembly-directory}/db</outputDirectory>
+                                    <destFileName>liquibase.jar</destFileName>
+                                </artifactItem>
+                            </artifactItems>
+                            <overWriteReleases>false</overWriteReleases>
+                            <overWriteSnapshots>true</overWriteSnapshots>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>2.6.1</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${assembly-directory}/db/lib</directory>
+                            <includes>
+                                <include>*.jar</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                        <fileset>
+                            <directory>${assembly-directory}/db</directory>
+                            <includes>
+                                <include>*.jar</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
                 </configuration>
             </plugin>
         </plugins>
