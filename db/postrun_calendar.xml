@@ -40,6 +40,12 @@
 		<sql>alter user calendar_ro SET search_path = calendar_sm,public</sql>
 		<rollback>alter user calendar_ro SET search_path = public</rollback>
     </changeSet>
+
+	<changeSet author="rpadalka" id="20150611-1">
+		<comment>Привилегии на сиквенсы</comment>
+		<sql>GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA calendar_sm to calendar_rw</sql>
+		<rollback>revoke USAGE, SELECT ON ALL SEQUENCES IN SCHEMA calendar_sm to calendar_rw</rollback>
+	</changeSet>
 	
 </databaseChangeLog>
 
