@@ -31,7 +31,7 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, targetEntity = Phone.class)
     private List<Phone> phones;
 
-    @Column(name = "userRole")
+    @Column(name = "userrole")
     @Enumerated(EnumType.STRING)
     private UserRole role;
 
