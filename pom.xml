@@ -10,11 +10,15 @@
     <name>calendar</name>
 
     <properties>
+        <!-- project properies -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.7</java.version>
+        <assembly-directory>${basedir}</assembly-directory>
+
         <!-- Dependencies versions -->
         <org.springframework.version>4.1.6.RELEASE</org.springframework.version>
         <org.springframework.security.version>4.0.1.RELEASE</org.springframework.security.version>
+        <org.springframework.spring-data-jpa.verions>1.8.0.RELEASE</org.springframework.spring-data-jpa.verions>
         <org.apache.commons-lang3.version>3.4</org.apache.commons-lang3.version>
         <commons-logging.version>1.2</commons-logging.version>
         <log4j.version>1.2.17</log4j.version>
@@ -22,13 +26,46 @@
         <jstl.version>1.2</jstl.version>
         <javax.servlet.version>3.1.0</javax.servlet.version>
         <javax.validation.version>1.1.0.Final</javax.validation.version>
+        <org.hibernate.hibernate-entitymanager.version>4.3.10.Final</org.hibernate.hibernate-entitymanager.version>
+        <org.postgresql.postgresql.version>9.4-1201</org.postgresql.postgresql.version>
+        <org.postgresql.postgresql.driver.version>jdbc41</org.postgresql.postgresql.driver.version>
+        <org.hibernate.hibernate-entitymanager.version>4.3.1.Final</org.hibernate.hibernate-entitymanager.version>
+        <org.hibernate.hibernate-jpa-api.version>1.0.0.Final</org.hibernate.hibernate-jpa-api.version>
+        <org.liquibase.liquibase-core.version>3.3.5</org.liquibase.liquibase-core.version>
+
         <!-- CSS and Javascript versions -->
         <jquery.version>1.11.1</jquery.version>
         <bootstrap.version>3.3.4</bootstrap.version>
         <angularjs.version>1.3.15</angularjs.version>
+
         <!-- Plugins versions -->
         <maven.compiler.version>2.3.2</maven.compiler.version>
+        <maven.dependency.version>2.10</maven.dependency.version>
+        <liquibase.maven.version>3.3.5</liquibase.maven.version>
     </properties>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <downloadSources>true</downloadSources>
+                <downloadJavadocs>true</downloadJavadocs>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <downloadSources>false</downloadSources>
+                <downloadJavadocs>false</downloadJavadocs>
+            </properties>
+        </profile>
+    </profiles>
 
     <dependencies>
         <!-- Spring dependency -->
@@ -57,36 +94,56 @@
             <artifactId>spring-security-config</artifactId>
             <version>${org.springframework.security.version}</version>
         </dependency>
-        
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${org.springframework.spring-data-jpa.verions}</version>
+        </dependency>
+
+        <!-- DB dependency -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${org.hibernate.hibernate-entitymanager.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.1-api</artifactId>
+            <version>${org.hibernate.hibernate-jpa-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${org.postgresql.postgresql.version}-${org.postgresql.postgresql.driver.version}</version>
+        </dependency>
+
         <!-- Logging dependency -->
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>${log4j.version}</version>
         </dependency>
-        
+
         <!-- Other dependency -->
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>${javax.version}</version>
-            <scope>provided</scope>
         </dependency>
-        <dependency>  
-            <groupId>javax.servlet</groupId>  
-            <artifactId>javax.servlet-api</artifactId>  
-            <version>${javax.servlet.version}</version>  
-            <scope>provided</scope>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
             <version>${javax.validation.version}</version>
         </dependency>
-        <dependency>  
-            <groupId>jstl</groupId>  
-            <artifactId>jstl</artifactId>  
-            <version>${jstl.version}</version>  
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${jstl.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -101,19 +158,19 @@
             <version>${jquery.version}</version>
         </dependency>
         <dependency>
-           <groupId>org.webjars</groupId>
-           <artifactId>angularjs</artifactId>
-           <version>${angularjs.version}</version>
+            <groupId>org.webjars</groupId>
+            <artifactId>angularjs</artifactId>
+            <version>${angularjs.version}</version>
         </dependency>
         <dependency>
-           <groupId>org.webjars</groupId>
-           <artifactId>bootstrap</artifactId>
-           <version>${bootstrap.version}</version>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>${bootstrap.version}</version>
         </dependency>
     </dependencies>
 
     <build>
-        <finalName>${project.name}</finalName> 
+        <finalName>${project.name}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -123,6 +180,87 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${maven.dependency.version}</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.postgresql</groupId>
+                                    <artifactId>postgresql</artifactId>
+                                    <version>${org.postgresql.postgresql.version}-${org.postgresql.postgresql.driver.version}</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${assembly-directory}/db/lib</outputDirectory>
+                                    <destFileName>postgresql-${org.postgresql.postgresql.version}.${org.postgresql.postgresql.driver.version}.jar</destFileName>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.liquibase</groupId>
+                                    <artifactId>liquibase-core</artifactId>
+                                    <version>${org.liquibase.liquibase-core.version}</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${assembly-directory}/db</outputDirectory>
+                                    <destFileName>liquibase.jar</destFileName>
+                                </artifactItem>
+                            </artifactItems>
+                            <overWriteReleases>false</overWriteReleases>
+                            <overWriteSnapshots>true</overWriteSnapshots>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>2.6.1</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${assembly-directory}/db/lib</directory>
+                            <includes>
+                                <include>*.jar</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                        <fileset>
+                            <directory>${assembly-directory}/db</directory>
+                            <includes>
+                                <include>*.jar</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>${liquibase.maven.version}</version>
+                <configuration>
+                    <changeLogFile>${assembly-directory}/db/master_calendar.xml</changeLogFile>
+                    <driver>org.postgresql.Driver</driver>
+                    <url>jdbc:postgresql://localhost:5432/postgres</url>
+                    <username>postgres</username>
+                    <password>postgres</password>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>update</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

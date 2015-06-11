@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Definition services beans -->
+    <bean id="operationService" class="com.diary.calendar.services.impl.OperationServiceImpl" />
+    <bean id="phoneService" class="com.diary.calendar.services.impl.PhoneServiceImpl" />
+    <bean id="recordService" class="com.diary.calendar.services.impl.RecordServiceImpl" />
+    <bean id="userService" class="com.diary.calendar.services.impl.UserServiceImpl" />
+
+    <!-- Definition other beans -->
+
+</beans>
