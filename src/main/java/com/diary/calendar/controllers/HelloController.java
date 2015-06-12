@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HelloController {
@@ -13,11 +14,14 @@ public class HelloController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String printWelcome(ModelMap model) {
-        model.addAttribute("message", "Spring 3 MVC Hello World !!!");
-        model.addAttribute("users", userService.getAllUsers());
-        return "hello";
+    @RequestMapping(value = {"/", "/welcome**"}, method = RequestMethod.GET)
+    public ModelAndView printWelcome() {
+        ModelAndView model = new ModelAndView();
+        ModelMap modelMap = model.getModelMap();
+        modelMap.addAttribute("message", "Spring 3 MVC Hello World !!!");
+        modelMap.addAttribute("users", userService.getAllUsers());
+        model.setViewName("hello");
+        return model;
     }
 
 }

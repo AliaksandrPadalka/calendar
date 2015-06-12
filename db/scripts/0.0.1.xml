@@ -10,7 +10,7 @@
         <dbms type="postgresql"/>
     </preConditions>
 
-    <changeSet id="20150612-1" author="aliaksandr_padalka@epam.com">
+    <changeSet id="20150612-1" author="aliaksandr_padalka">
         <createTable tableName="operations">
             <column autoIncrement="true" name="operationid" type="BIGSERIAL">
                 <constraints primaryKey="true" primaryKeyName="operations_pkey"/>
@@ -21,7 +21,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="20150612-2" author="aliaksandr_padalka@epam.com">
+    <changeSet id="20150612-2" author="aliaksandr_padalka">
         <createTable tableName="phones">
             <column autoIncrement="true" name="phoneid" type="BIGSERIAL">
                 <constraints primaryKey="true" primaryKeyName="phones_pkey"/>
@@ -33,7 +33,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="20150612-3" author="aliaksandr_padalka@epam.com">
+    <changeSet id="20150612-3" author="aliaksandr_padalka">
         <createTable tableName="records">
             <column autoIncrement="true" name="recordid" type="BIGSERIAL">
                 <constraints primaryKey="true" primaryKeyName="records_pkey"/>
@@ -43,7 +43,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="20150612-4" author="aliaksandr_padalka@epam.com">
+    <changeSet id="20150612-4" author="aliaksandr_padalka">
         <createTable tableName="user_chooses">
             <column name="operationid" type="BIGINT">
                 <constraints nullable="false"/>
@@ -54,7 +54,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="20150612-5" author="aliaksandr_padalka@epam.com">
+    <changeSet id="20150612-5" author="aliaksandr_padalka">
         <createTable tableName="users">
             <column autoIncrement="true" name="userid" type="BIGSERIAL">
                 <constraints primaryKey="true" primaryKeyName="users_pkey"/>
@@ -64,7 +64,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="20150612-6" author="aliaksandr_padalka@epam.com">
+    <changeSet id="20150612-6" author="aliaksandr_padalka">
         <addForeignKeyConstraint baseColumnNames="userid" baseTableName="records"
                                  constraintName="fk_b7an0av17e8hwrgbhxukc3y51" deferrable="false"
                                  initiallyDeferred="false" referencedColumnNames="userid" referencedTableName="users"/>
