@@ -11,8 +11,8 @@
         <dbms type="postgresql" />
     </preConditions>
 
-    <include file="scripts/1.0.0.xml" relativeToChangelogFile="true"/>
-    <include file="scripts/1.0.1.xml" relativeToChangelogFile="true"/>
+    <include file="scripts/0.0.1.xml" relativeToChangelogFile="true"/>
+    <include file="scripts/0.0.1-data.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
 

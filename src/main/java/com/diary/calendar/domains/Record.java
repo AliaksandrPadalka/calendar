@@ -1,6 +1,7 @@
 package com.diary.calendar.domains;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,9 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -20,8 +20,7 @@ import javax.persistence.Table;
 public class Record implements Serializable {
 
     @Id
-    @SequenceGenerator(name = "pk_sequence", sequenceName = "entity_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "recordId")
     private Long id;
 
@@ -29,8 +28,11 @@ public class Record implements Serializable {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private User user;
 
-    @OneToMany(mappedBy = "record", fetch = FetchType.LAZY, targetEntity = Operation.class)
+    @ManyToMany(mappedBy = "records", fetch = FetchType.LAZY)
     private List<Operation> operations;
+
+    @Column(name = "date")
+    private Date date;
 
     public Long getId() {
         return id;
@@ -54,6 +56,14 @@ public class Record implements Serializable {
 
     public void setOperations(List<Operation> operations) {
         this.operations = operations;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
 }

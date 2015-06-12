@@ -1,6 +1,7 @@
 package com.diary.calendar.domains;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,8 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,8 +19,7 @@ import javax.persistence.Table;
 public class Operation implements Serializable {
 
     @Id
-    @SequenceGenerator(name = "pk_sequence", sequenceName = "entity_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "operationId")
     private Long id;
 
@@ -32,9 +32,13 @@ public class Operation implements Serializable {
     @Column(name = "duration")
     private Double duration;
 
-    @JoinColumn(name = "recordId")
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Record record;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "user_chooses",
+            joinColumns = {
+                @JoinColumn(name = "operationId", nullable = false, updatable = false)},
+            inverseJoinColumns = {
+                @JoinColumn(name = "recordId", nullable = false, updatable = false)})
+    private List<Record> records;
 
     public Long getId() {
         return id;
@@ -68,12 +72,12 @@ public class Operation implements Serializable {
         this.duration = duration;
     }
 
-    public Record getRecord() {
-        return record;
+    public List<Record> getRecord() {
+        return records;
     }
 
-    public void setRecord(Record record) {
-        this.record = record;
+    public void setRecord(List<Record> records) {
+        this.records = records;
     }
 
 }
