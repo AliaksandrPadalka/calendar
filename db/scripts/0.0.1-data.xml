@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+	http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="20150612-7" author="aliaksandr_padalka@epam.com">
+        <comment>Add default users</comment>
+
+        <insert tableName="users">
+            <column name="name" value="defaultUser1"/>
+            <column name="userrole" value="USER"/>
+        </insert>
+
+        <insert tableName="users">
+            <column name="name" value="defaultUser2"/>
+            <column name="userrole" value="USER"/>
+        </insert>
+
+        <insert tableName="users">
+            <column name="name" value="defaultUser3"/>
+            <column name="userrole" value="USER"/>
+        </insert>
+
+        <insert tableName="users">
+            <column name="name" value="Admin"/>
+            <column name="userrole" value="ADMIN"/>
+        </insert>
+
+        <insert tableName="users">
+            <column name="name" value="anonimous"/>
+            <column name="userrole" value="ANONIMOUS"/>
+        </insert>
+
+        <insert tableName="users">
+            <column name="name" value="Olya"/>
+            <column name="userrole" value="OWNER"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="20150612-8" author="aliaksandr_padalka@epam.com">
+        <comment>Add default operations</comment>
+
+        <insert tableName="operations">
+            <column name="name" value="operation1"/>
+            <column name="description" value="operation1 desc"/>
+            <column name="duration" value="1.0"/>
+        </insert>
+
+        <insert tableName="operations">
+            <column name="name" value="operation2"/>
+            <column name="description" value="operation2 desc"/>
+            <column name="duration" value="0.5"/>
+        </insert>
+
+        <insert tableName="operations">
+            <column name="name" value="operation3"/>
+            <column name="description" value="operation3 desc"/>
+            <column name="duration" value="1.5"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

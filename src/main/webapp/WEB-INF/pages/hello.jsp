@@ -14,6 +14,16 @@
     <body>
         <h1>Message : ${message}</h1>
         <hr/>
+
+        <c:if test="${not empty users}">
+            <ul>
+                <c:forEach var="user" items="${users}">
+                    <li>
+                        <c:out value="${user.name}"/>
+                    </li>
+                </c:forEach>
+            </ul>
+        </c:if>
     </body>
 
 </html>

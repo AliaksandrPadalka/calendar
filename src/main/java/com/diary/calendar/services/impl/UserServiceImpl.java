@@ -25,15 +25,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserByUserId(final Long userId) {
-        User user = userRepository.findOne(userId);
-        return user;
+        return userRepository.findOne(userId);
     }
 
     @Override
     public User saveOrUpdateUser(final User user) {
-        userRepository.delete(Long.MIN_VALUE);
-        userRepository.delete(user);
-
         return userRepository.save(user);
     }
 
@@ -47,7 +43,7 @@ public class UserServiceImpl implements UserService {
         try {
             userRepository.delete(userId);
             return true;
-        } catch(IllegalArgumentException ex) {
+        } catch (IllegalArgumentException ex) {
             LOG.error(ex);
         }
         return false;

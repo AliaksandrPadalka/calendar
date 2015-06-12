@@ -9,13 +9,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HelloController {
-    
+
     @Autowired
     private UserService userService;
-    
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String printWelcome(ModelMap model) {
-        model.addAttribute("message", "Spring 3 MVC Hello World");
+        model.addAttribute("message", "Spring 3 MVC Hello World !!!");
+        model.addAttribute("users", userService.getAllUsers());
         return "hello";
     }
 

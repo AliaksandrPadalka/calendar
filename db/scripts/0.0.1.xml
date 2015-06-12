@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+	http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <preConditions>
+        <dbms type="postgresql"/>
+    </preConditions>
+
+    <changeSet id="20150612-1" author="aliaksandr_padalka@epam.com">
+        <createTable tableName="operations">
+            <column autoIncrement="true" name="operationid" type="BIGSERIAL">
+                <constraints primaryKey="true" primaryKeyName="operations_pkey"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="duration" type="FLOAT8"/>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20150612-2" author="aliaksandr_padalka@epam.com">
+        <createTable tableName="phones">
+            <column autoIncrement="true" name="phoneid" type="BIGSERIAL">
+                <constraints primaryKey="true" primaryKeyName="phones_pkey"/>
+            </column>
+            <column name="code" type="VARCHAR(255)"/>
+            <column name="number" type="VARCHAR(255)"/>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="userid" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20150612-3" author="aliaksandr_padalka@epam.com">
+        <createTable tableName="records">
+            <column autoIncrement="true" name="recordid" type="BIGSERIAL">
+                <constraints primaryKey="true" primaryKeyName="records_pkey"/>
+            </column>
+            <column name="date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="userid" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20150612-4" author="aliaksandr_padalka@epam.com">
+        <createTable tableName="user_chooses">
+            <column name="operationid" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="recordid" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20150612-5" author="aliaksandr_padalka@epam.com">
+        <createTable tableName="users">
+            <column autoIncrement="true" name="userid" type="BIGSERIAL">
+                <constraints primaryKey="true" primaryKeyName="users_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="userrole" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20150612-6" author="aliaksandr_padalka@epam.com">
+        <addForeignKeyConstraint baseColumnNames="userid" baseTableName="records"
+                                 constraintName="fk_b7an0av17e8hwrgbhxukc3y51" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="userid" referencedTableName="users"/>
+        <addForeignKeyConstraint baseColumnNames="operationid" baseTableName="user_chooses"
+                                 constraintName="fk_rl8d468ufrhtjc4gs15k8o307" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="operationid" referencedTableName="operations"/>
+        <addForeignKeyConstraint baseColumnNames="recordid" baseTableName="user_chooses"
+                                 constraintName="fk_sxr463ok5ji12ts2salsdy1bl" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="recordid" referencedTableName="records"/>
+        <addForeignKeyConstraint baseColumnNames="userid" baseTableName="phones"
+                                 constraintName="fk_t2oxnyjl9oh3n0y3wqh171kts" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="userid" referencedTableName="users"/>
+    </changeSet>
+
+</databaseChangeLog>
