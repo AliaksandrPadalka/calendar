@@ -15,60 +15,68 @@
     </head>
 
     <body>
-        <%@ include file="header.jsp" %>
-
-        <h1>Message : ${message}</h1>
-        <hr/>
-        <h4>Users :</h4>
-        <c:if test="${not empty users}">
-            <table border="1">
-                <tr>
-                    <td>user id</td>
-                    <td>user name</td>
-                    <td>user phone</td>
-                    <td>user role</td>
-                </tr>
-                <c:forEach var="user" items="${users}">
-                    <tr>
-                        <td>${user.id}</td>
-                        <td>${user.name}</td>
-                        <td>
-                            <c:if test="${not empty user.phones}">
-                                <ul>
-                                    <c:forEach var="phone" items="${user.phones}">
-                                        <li>
-                                            ${phone}
-                                        </li>
-                                    </c:forEach>
-                                </ul>
-                            </c:if>
-                        </td>
-                        <td>${user.role}</td>
-                    </tr>
-                </c:forEach>
-            </table>
-        </c:if>
-        <h4>Operations :</h4>
-        <c:if test="${not empty operations}">
-            <table border="1">
-                <tr>
-                    <td>operation id</td>
-                    <td>operation name</td>
-                    <td>operation description</td>
-                    <td>operation duration</td>
-                </tr>
-                <c:forEach var="operation" items="${operations}">
-                    <tr>
-                        <td>${operation.id}</td>
-                        <td>${operation.name}</td>
-                        <td>${operation.description}</td>
-                        <td>${operation.duration}</td>
-                    </tr>
-                </c:forEach>
-            </table>
-        </c:if>
-
-        <%@ include file="footer.jsp" %>
+        <div class="container-fluid">
+            <div class="row">
+                <%@ include file="header.jsp" %>
+            </div>
+            <hr/>
+            <div>
+                <h1>Message : ${message}</h1>
+                <hr/>
+                <h4>Users :</h4>
+                <c:if test="${not empty users}">
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>user id</td>
+                            <td>user name</td>
+                            <td>user phone</td>
+                            <td>user role</td>
+                        </tr>
+                        <c:forEach var="user" items="${users}">
+                            <tr>
+                                <td>${user.id}</td>
+                                <td>${user.name}</td>
+                                <td>
+                                    <c:if test="${not empty user.phones}">
+                                        <ul>
+                                            <c:forEach var="phone" items="${user.phones}">
+                                                <li>
+                                                    ${phone}
+                                                </li>
+                                            </c:forEach>
+                                        </ul>
+                                    </c:if>
+                                </td>
+                                <td>${user.role}</td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </c:if>
+                <h4>Operations :</h4>
+                <c:if test="${not empty operations}">
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>operation id</td>
+                            <td>operation name</td>
+                            <td>operation description</td>
+                            <td>operation duration</td>
+                        </tr>
+                        <c:forEach var="operation" items="${operations}">
+                            <tr>
+                                <td>${operation.id}</td>
+                                <td>${operation.name}</td>
+                                <td>${operation.description}</td>
+                                <td>${operation.duration}</td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </c:if>
+            </div>
+            <hr/>
+            <div>
+                <%@ include file="footer.jsp" %>
+            </div>
+        </div>
 
         <script type="text/javascript" src="${jqueryJs}" />
         <script type="text/javascript" src="${bootstrapJs}" />
