@@ -32,7 +32,7 @@ public class Operation implements Serializable {
     @Column(name = "duration")
     private Double duration;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "user_chooses",
             joinColumns = {
                 @JoinColumn(name = "operationId", nullable = false, updatable = false)},

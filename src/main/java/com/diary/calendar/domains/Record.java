@@ -25,10 +25,10 @@ public class Record implements Serializable {
     private Long id;
 
     @JoinColumn(name = "userId")
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private User user;
 
-    @ManyToMany(mappedBy = "records", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "records", fetch = FetchType.EAGER)
     private List<Operation> operations;
 
     @Column(name = "date")

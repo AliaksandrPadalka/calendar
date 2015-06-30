@@ -26,14 +26,14 @@ public class User implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, targetEntity = Phone.class)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, targetEntity = Phone.class)
     private List<Phone> phones;
 
     @Column(name = "userrole")
     @Enumerated(EnumType.STRING)
     private UserRole role;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, targetEntity = Record.class)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, targetEntity = Record.class)
     private List<Record> records;
 
     public Long getId() {

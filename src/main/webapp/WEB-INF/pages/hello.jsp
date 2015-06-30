@@ -1,29 +1,76 @@
-<%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html lang="en">
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+<html lang="en">
     <head>
         <meta charset="utf-8"/>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/webjars/bootstrap/3.3.4/css/bootstrap.min.css" />
-        <script type="text/javascript" src="${pageContext.request.contextPath}/webjars/jquery/1.11.1/jquery.min.js"></script>
-        <script type="text/javascript" src="${pageContext.request.contextPath}/webjars/angularjs/1.3.15/angular.js"></script>
-        <script type="text/javascript" src="${pageContext.request.contextPath}/webjars/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+        <spring:url value="/resources/bootstrap/css/bootstrap.css" var="bootstrapCss" />
+        <spring:url value="/resources/jquery/jquery.js" var="jqueryJs" />
+        <spring:url value="/resources/bootstrap/js/bootstrap.js" var="bootstrapJs" />
+
+        <link href="${bootstrapCss}" rel="stylesheet" type="text/css" />
     </head>
 
     <body>
+        <%@ include file="header.jsp" %>
+
         <h1>Message : ${message}</h1>
         <hr/>
-
+        <h4>Users :</h4>
         <c:if test="${not empty users}">
-            <ul>
+            <table border="1">
+                <tr>
+                    <td>user id</td>
+                    <td>user name</td>
+                    <td>user phone</td>
+                    <td>user role</td>
+                </tr>
                 <c:forEach var="user" items="${users}">
-                    <li>
-                        <c:out value="${user.name}"/>
-                    </li>
+                    <tr>
+                        <td>${user.id}</td>
+                        <td>${user.name}</td>
+                        <td>
+                            <c:if test="${not empty user.phones}">
+                                <ul>
+                                    <c:forEach var="phone" items="${user.phones}">
+                                        <li>
+                                            ${phone}
+                                        </li>
+                                    </c:forEach>
+                                </ul>
+                            </c:if>
+                        </td>
+                        <td>${user.role}</td>
+                    </tr>
                 </c:forEach>
-            </ul>
+            </table>
         </c:if>
-    </body>
+        <h4>Operations :</h4>
+        <c:if test="${not empty operations}">
+            <table border="1">
+                <tr>
+                    <td>operation id</td>
+                    <td>operation name</td>
+                    <td>operation description</td>
+                    <td>operation duration</td>
+                </tr>
+                <c:forEach var="operation" items="${operations}">
+                    <tr>
+                        <td>${operation.id}</td>
+                        <td>${operation.name}</td>
+                        <td>${operation.description}</td>
+                        <td>${operation.duration}</td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </c:if>
 
+        <%@ include file="footer.jsp" %>
+
+        <script type="text/javascript" src="${jqueryJs}" />
+        <script type="text/javascript" src="${bootstrapJs}" />
+    </body>
 </html>

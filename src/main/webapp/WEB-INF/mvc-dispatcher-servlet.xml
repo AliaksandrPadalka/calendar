@@ -18,7 +18,6 @@
         <property name="suffix" value=".jsp" />
     </bean>
 
-    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/" />
     <mvc:resources mapping="/resources/**" location="/resources/" />
 
     <import resource="classpath:/spring-beans-definition.xml" />

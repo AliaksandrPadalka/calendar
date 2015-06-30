@@ -35,7 +35,7 @@ public class Phone implements Serializable {
     private String number;
 
     @JoinColumn(name = "userId")
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private User user;
 
     public Long getId() {
