@@ -1,11 +1,18 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
 
     <head>
-        <script type="text/javascript" src="../js/js.js" />
+        <meta charset="utf-8"/>
+        <spring:url value="/resources/js/js.js" var="js" />
+        <spring:url value="/resources/bootstrap/css/bootstrap.css" var="bootstrapCss" />
+        <spring:url value="/resources/jquery/jquery.js" var="jqueryJs" />
+        <spring:url value="/resources/bootstrap/js/bootstrap.js" var="bootstrapJs" />
+
+        <link href="${bootstrapCss}" rel="stylesheet" type="text/css" />
     </head>
 
     <body
@@ -21,9 +28,13 @@
         </form>
 
         <c:if test="${pageContext.request.userPrincipal.name != null}">
-            <h2> Welcome : ${pageContext.request.userPrincipal.name} | <a href = "javascript:formSubmit()" > Logout </a></h2>
+            <h2> Welcome : ${user.firstname} | <a href = "javascript:formSubmit()" > Logout </a></h2>
         </c:if>
 
         <%@ include file="footer.jsp" %>
+
+        <script type="text/javascript" src="${js}" />
+        <script type="text/javascript" src="${jqueryJs}" />
+        <script type="text/javascript" src="${bootstrapJs}" />
     </body>
 </html>
