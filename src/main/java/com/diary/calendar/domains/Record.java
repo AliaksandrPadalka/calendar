@@ -1,7 +1,6 @@
 package com.diary.calendar.domains;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.hibernate.annotations.Type;
+import org.joda.time.DateTime;
 
 @Entity
 @Table(name = "records")
@@ -32,7 +33,8 @@ public class Record implements Serializable {
     private List<Operation> operations;
 
     @Column(name = "date")
-    private Date date;
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
+    private DateTime date;
 
     public Long getId() {
         return id;
@@ -58,11 +60,11 @@ public class Record implements Serializable {
         this.operations = operations;
     }
 
-    public Date getDate() {
+    public DateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(DateTime date) {
         this.date = date;
     }
 

@@ -14,32 +14,38 @@ public class OperationServiceImpl implements OperationService {
     private static final Logger LOG = Logger.getLogger(UserServiceImpl.class.getName());
 
     @Autowired
-    private OperationRepository operationRepository;
+    private OperationRepository repository;
 
     @Override
     public List<Operation> getAllOperations() {
         List<Operation> operations = new ArrayList<>();
-        operations.addAll((Collection<? extends Operation>) operationRepository.findAll());
+        operations.addAll((Collection<? extends Operation>) repository.findAll());
         return operations;
     }
 
     @Override
     public Operation getOperationByOperationId(final Long operationId) {
-        return null;
+        return repository.findOne(operationId);
     }
 
     @Override
     public Operation saveOrUpdateOperation(final Operation operation) {
-        return null;
+        return repository.save(operation);
     }
 
     @Override
     public boolean deleteOperation(final Operation operation) {
-        return false;
+        return deleteOperation(operation.getId());
     }
 
     @Override
     public boolean deleteOperation(final Long operationId) {
+        try {
+            repository.delete(operationId);
+            return true;
+        } catch (IllegalArgumentException ex) {
+            LOG.error(ex);
+        }
         return false;
     }
 

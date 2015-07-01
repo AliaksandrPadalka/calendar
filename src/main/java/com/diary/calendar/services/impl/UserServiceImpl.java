@@ -14,23 +14,23 @@ public class UserServiceImpl implements UserService {
     private static final Logger LOG = Logger.getLogger(UserServiceImpl.class.getName());
 
     @Autowired
-    private UserRepository userRepository;
+    private UserRepository repository;
 
     @Override
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<>();
-        users.addAll((Collection<? extends User>) userRepository.findAll());
+        users.addAll((Collection<? extends User>) repository.findAll());
         return users;
     }
 
     @Override
     public User getUserByUserId(final Long userId) {
-        return userRepository.findOne(userId);
+        return repository.findOne(userId);
     }
 
     @Override
     public User saveOrUpdateUser(final User user) {
-        return userRepository.save(user);
+        return repository.save(user);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean deleteUser(final Long userId) {
         try {
-            userRepository.delete(userId);
+            repository.delete(userId);
             return true;
         } catch (IllegalArgumentException ex) {
             LOG.error(ex);
