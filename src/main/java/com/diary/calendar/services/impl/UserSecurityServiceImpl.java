@@ -13,7 +13,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 public class UserSecurityServiceImpl implements UserDetailsService {
 
@@ -21,7 +20,7 @@ public class UserSecurityServiceImpl implements UserDetailsService {
     private UserRepository repository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username)/* throws UsernameNotFoundException*/ {
         UserDetails userDetails = null;
 
         List<User> users = new ArrayList<>();
