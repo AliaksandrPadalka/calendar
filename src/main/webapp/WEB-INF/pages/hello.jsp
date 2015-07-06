@@ -5,6 +5,7 @@
 
 <html lang="en">
     <head>
+        <title>Welcome</title>
         <meta charset="utf-8"/>
 
         <spring:url value="/resources/bootstrap/css/bootstrap.css" var="bootstrapCss" />
@@ -19,10 +20,9 @@
             <div class="row">
                 <%@ include file="header.jsp" %>
             </div>
-            <hr/>
-            <div>
+
+            <div class="row">
                 <h1>Message : ${message}</h1>
-                <hr/>
                 <h4>Users :</h4>
                 <c:if test="${not empty users}">
                     <table class="table table-bordered">
@@ -72,8 +72,8 @@
                     </table>
                 </c:if>
             </div>
-            <hr/>
-            <div>
+
+            <div class="row">
                 <%@ include file="footer.jsp" %>
             </div>
         </div>

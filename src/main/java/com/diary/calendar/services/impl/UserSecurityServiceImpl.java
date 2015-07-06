@@ -1,5 +1,6 @@
 package com.diary.calendar.services.impl;
 
+import com.diary.calendar.Constants;
 import com.diary.calendar.domains.User;
 import com.diary.calendar.enums.UserRole;
 import com.diary.calendar.repositories.UserRepository;
@@ -39,16 +40,16 @@ public class UserSecurityServiceImpl implements UserDetailsService {
 
     private Collection<? extends GrantedAuthority> getAuthorities(UserRole role) {
         List<SimpleGrantedAuthority> authList = new ArrayList<>();
-        authList.add(new SimpleGrantedAuthority("ANONIMOUS"));
+        authList.add(new SimpleGrantedAuthority(Constants.ANONIMOUS));
 
         if (UserRole.USER.equals(role)) {
-            authList.add(new SimpleGrantedAuthority("USER"));
+            authList.add(new SimpleGrantedAuthority(role.name()));
         }
         if (UserRole.OWNER.equals(role)) {
-            authList.add(new SimpleGrantedAuthority("OWNER"));
+            authList.add(new SimpleGrantedAuthority(role.name()));
         }
         if (UserRole.ADMIN.equals(role)) {
-            authList.add(new SimpleGrantedAuthority("ADMIN"));
+            authList.add(new SimpleGrantedAuthority(role.name()));
         }
 
         return authList;

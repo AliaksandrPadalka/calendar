@@ -9,9 +9,17 @@ import org.springframework.web.servlet.ModelAndView;
 public class LoginController {
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public ModelAndView showPage() {
+    public ModelAndView showAdminPage() {
         ModelAndView model = new ModelAndView();
         model.setViewName("admin");
         return model;
     }
+
+    @RequestMapping(value = {"/denied", "/login", "/logout"}, method = RequestMethod.GET)
+    public ModelAndView showDeniedPage() {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("403");
+        return model;
+    }
+
 }
