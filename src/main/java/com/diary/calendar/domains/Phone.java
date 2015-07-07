@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
+ * Entity "Phone". Describe phone type, code, number and user of the specific phone.
  *
  * @author Aliaksandr_Padalka
  */
@@ -43,14 +44,16 @@ public class Phone implements Serializable {
     private User user;
 
     /**
+     * Get id.
      *
-     * @return
+     * @return id
      */
     public Long getId() {
         return id;
     }
 
     /**
+     * Set id.
      *
      * @param id
      */
@@ -59,14 +62,16 @@ public class Phone implements Serializable {
     }
 
     /**
+     * Get type.
      *
-     * @return
+     * @return type
      */
     public PhoneType getType() {
         return type;
     }
 
     /**
+     * Set type.
      *
      * @param type
      */
@@ -75,14 +80,16 @@ public class Phone implements Serializable {
     }
 
     /**
+     * Get code.
      *
-     * @return
+     * @return code
      */
     public String getCode() {
         return code;
     }
 
     /**
+     * Set code.
      *
      * @param code
      */
@@ -91,14 +98,16 @@ public class Phone implements Serializable {
     }
 
     /**
+     * Get number.
      *
-     * @return
+     * @return number
      */
     public String getNumber() {
         return number;
     }
 
     /**
+     * Set number.
      *
      * @param number
      */
@@ -107,14 +116,16 @@ public class Phone implements Serializable {
     }
 
     /**
+     * Get user.
      *
-     * @return
+     * @return user
      */
     public User getUser() {
         return user;
     }
 
     /**
+     * Set user.
      *
      * @param user
      */

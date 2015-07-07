@@ -13,8 +13,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 /**
+ * class UserSecurityServiceImpl implements interface {@link UserDetailsService}
  *
  * @author Aliaksandr_Padalka
  */
@@ -23,8 +25,20 @@ public class UserSecurityServiceImpl implements UserDetailsService {
     @Autowired
     private UserRepository repository;
 
+    /**
+     * Get {@link UserDetails} <code>user</code>
+     *
+     * @param username
+     * @return userDetails
+     * @throws UsernameNotFoundException
+     */
     @Override
-    public UserDetails loadUserByUsername(String username)/* throws UsernameNotFoundException*/ {
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+        if (StringUtils.isEmpty(username)) {
+            throw new UsernameNotFoundException("Username should not be empty.");
+        }
+
         UserDetails userDetails = null;
 
         List<User> users = new ArrayList<>();
@@ -43,7 +57,7 @@ public class UserSecurityServiceImpl implements UserDetailsService {
 
     private Collection<? extends GrantedAuthority> getAuthorities(UserRole role) {
         List<SimpleGrantedAuthority> authList = new ArrayList<>();
-        authList.add(new SimpleGrantedAuthority(Constants.ANONIMOUS));
+        authList.add(new SimpleGrantedAuthority(Constants.Access.ANONIMOUS));
 
         if (role != null) {
             authList.add(new SimpleGrantedAuthority(role.name()));

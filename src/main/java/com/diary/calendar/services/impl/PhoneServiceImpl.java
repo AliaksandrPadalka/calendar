@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
+ * class PhoneServiceImpl implements interface {@link PhoneService}
  *
  * @author Aliaksandr_Padalka
  */
@@ -21,8 +22,9 @@ public class PhoneServiceImpl implements PhoneService {
     private PhoneRepository repository;
 
     /**
+     * Get all phones.
      *
-     * @return
+     * @return phones
      */
     @Override
     public List<Phone> getAllPhones() {
@@ -32,9 +34,10 @@ public class PhoneServiceImpl implements PhoneService {
     }
 
     /**
+     * Get all phones by <code>userId</code>.
      *
      * @param userId
-     * @return
+     * @return phones
      */
     @Override
     public List<Phone> getPhonesByUserId(final Long userId) {
@@ -50,9 +53,10 @@ public class PhoneServiceImpl implements PhoneService {
     }
 
     /**
+     * Get phone by <code>phoneId</code>.
      *
      * @param phoneId
-     * @return
+     * @return phone
      */
     @Override
     public Phone getPhoneByPhoneId(final Long phoneId) {
@@ -60,9 +64,10 @@ public class PhoneServiceImpl implements PhoneService {
     }
 
     /**
+     * Save new or update existing <code>phone</code>.
      *
      * @param phone
-     * @return
+     * @return phone
      */
     @Override
     public Phone saveOrUpdatePhone(final Phone phone) {
@@ -70,9 +75,10 @@ public class PhoneServiceImpl implements PhoneService {
     }
 
     /**
+     * Delete <code>phone</code>.
      *
      * @param phone
-     * @return
+     * @return <code>true</code> else if exception return <code>false</code>
      */
     @Override
     public boolean deletePhone(final Phone phone) {
@@ -80,9 +86,10 @@ public class PhoneServiceImpl implements PhoneService {
     }
 
     /**
+     * Delete phone by <code>phoneId</code>.
      *
      * @param phoneId
-     * @return
+     * @return <code>true</code> else if exception return <code>false</code>
      */
     @Override
     public boolean deletePhone(final Long phoneId) {

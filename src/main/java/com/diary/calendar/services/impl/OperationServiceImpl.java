@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
+ * class OperationServiceImpl implements interface {@link OperationService}
  *
  * @author Aliaksandr_Padalka
  */
@@ -21,8 +22,9 @@ public class OperationServiceImpl implements OperationService {
     private OperationRepository repository;
 
     /**
+     * Get all operations
      *
-     * @return
+     * @return operations
      */
     @Override
     public List<Operation> getAllOperations() {
@@ -32,9 +34,10 @@ public class OperationServiceImpl implements OperationService {
     }
 
     /**
+     * Get operation by <code>operationId</code>.
      *
      * @param operationId
-     * @return
+     * @return operation
      */
     @Override
     public Operation getOperationByOperationId(final Long operationId) {
@@ -42,9 +45,10 @@ public class OperationServiceImpl implements OperationService {
     }
 
     /**
+     * Save new or update existing <code>operation</code>.
      *
      * @param operation
-     * @return
+     * @return operation
      */
     @Override
     public Operation saveOrUpdateOperation(final Operation operation) {
@@ -52,9 +56,10 @@ public class OperationServiceImpl implements OperationService {
     }
 
     /**
+     * Delete <code>operation</code>.
      *
      * @param operation
-     * @return
+     * @return <code>true</code> else if exception return <code>false</code>
      */
     @Override
     public boolean deleteOperation(final Operation operation) {
@@ -62,9 +67,10 @@ public class OperationServiceImpl implements OperationService {
     }
 
     /**
+     * Delete operation by <code>operationId</code>.
      *
      * @param operationId
-     * @return
+     * @return <code>true</code> else if exception return <code>false</code>
      */
     @Override
     public boolean deleteOperation(final Long operationId) {

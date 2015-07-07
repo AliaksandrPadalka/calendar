@@ -4,49 +4,56 @@ import com.diary.calendar.domains.Phone;
 import java.util.List;
 
 /**
+ * interface PhoneService
  *
  * @author Aliaksandr_Padalka
  */
 public interface PhoneService {
 
     /**
+     * Get all phones.
      *
-     * @return
+     * @return phones
      */
     List<Phone> getAllPhones();
 
     /**
+     * Get all phones by <code>userId</code>.
      *
-     * @param phoneId
-     * @return
+     * @param userId
+     * @return phones
      */
-    List<Phone> getPhonesByUserId(Long phoneId);
+    List<Phone> getPhonesByUserId(Long userId);
 
     /**
+     * Get phone by <code>phoneId</code>.
      *
      * @param phoneId
-     * @return
+     * @return phone
      */
     Phone getPhoneByPhoneId(Long phoneId);
 
     /**
+     * Save new or update existing <code>phone</code>.
      *
      * @param phone
-     * @return
+     * @return phone
      */
     Phone saveOrUpdatePhone(Phone phone);
 
     /**
+     * Delete <code>phone</code>.
      *
      * @param phone
-     * @return
+     * @return <code>true</code> else if exception return <code>false</code>
      */
     boolean deletePhone(Phone phone);
 
     /**
+     * Delete phone by <code>phoneId</code>.
      *
      * @param phoneId
-     * @return
+     * @return <code>true</code> else if exception return <code>false</code>
      */
     boolean deletePhone(Long phoneId);
 }

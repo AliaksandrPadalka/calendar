@@ -1,5 +1,6 @@
 package com.diary.calendar.controllers;
 
+import com.diary.calendar.Constants;
 import com.diary.calendar.services.OperationService;
 import com.diary.calendar.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,9 @@ public class HelloController {
     private OperationService operationService;
 
     /**
+     * Return default view.
      *
-     * @return
+     * @return model
      */
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView getDefaultPage() {
@@ -30,7 +32,7 @@ public class HelloController {
         model.addObject("message", "Spring 3 MVC Hello World !!!");
         model.addObject("users", userService.getAllUsers());
         model.addObject("operations", operationService.getAllOperations());
-        model.setViewName("hello");
+        model.setViewName(Constants.Pages.URL_PAGE_HELLO);
         return model;
     }
 

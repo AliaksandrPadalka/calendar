@@ -12,6 +12,7 @@ import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
+ * class RecordServiceImpl implements interface {@link RecordService}
  *
  * @author Aliaksandr_Padalka
  */
@@ -23,8 +24,9 @@ public class RecordServiceImpl implements RecordService {
     private RecordRepository repository;
 
     /**
+     * Get all records.
      *
-     * @return
+     * @return records
      */
     @Override
     public List<Record> getAllRecord() {
@@ -34,9 +36,10 @@ public class RecordServiceImpl implements RecordService {
     }
 
     /**
+     * Get records by specific <code>date</code>.
      *
      * @param date
-     * @return
+     * @return records
      */
     @Override
     public List<Record> getRecordsByDate(final DateTime date) {
@@ -67,9 +70,10 @@ public class RecordServiceImpl implements RecordService {
     }
 
     /**
+     * Get record by <code>recordId<code>.
      *
      * @param recordId
-     * @return
+     * @return record
      */
     @Override
     public Record getRecordByRecordId(final Long recordId) {
@@ -77,9 +81,10 @@ public class RecordServiceImpl implements RecordService {
     }
 
     /**
+     * Save new or update existing <code>record</code>.
      *
      * @param record
-     * @return
+     * @return record
      */
     @Override
     public Record saveOrUpdateRecord(final Record record) {
@@ -87,9 +92,10 @@ public class RecordServiceImpl implements RecordService {
     }
 
     /**
+     * Delete <code>record</code>.
      *
      * @param record
-     * @return
+     * @return <code>true</code> else if exception return <code>false</code>
      */
     @Override
     public boolean deleteRecord(final Record record) {
@@ -97,9 +103,10 @@ public class RecordServiceImpl implements RecordService {
     }
 
     /**
+     * Delete record by <tt>recordId</tt>.
      *
      * @param recordId
-     * @return
+     * @return <code>true</code> else if exception return <code>false</code>
      */
     @Override
     public boolean deleteRecord(final Long recordId) {

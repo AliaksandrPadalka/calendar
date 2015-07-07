@@ -15,6 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 /**
+ * Entity "Operation". Describe short name, duration and description of the specific operation.
  *
  * @author Aliaksandr_Padalka
  */
@@ -45,14 +46,16 @@ public class Operation implements Serializable {
     private List<Record> records;
 
     /**
+     * Return id.
      *
-     * @return
+     * @return id
      */
     public Long getId() {
         return id;
     }
 
     /**
+     * Set id.
      *
      * @param id
      */
@@ -61,14 +64,16 @@ public class Operation implements Serializable {
     }
 
     /**
+     * Get name.
      *
-     * @return
+     * @return name
      */
     public String getName() {
         return name;
     }
 
     /**
+     * Set name.
      *
      * @param name
      */
@@ -77,14 +82,16 @@ public class Operation implements Serializable {
     }
 
     /**
+     * Get description.
      *
-     * @return
+     * @return description
      */
     public String getDescription() {
         return description;
     }
 
     /**
+     * Set description.
      *
      * @param description
      */
@@ -93,14 +100,16 @@ public class Operation implements Serializable {
     }
 
     /**
+     * Get duration.
      *
-     * @return
+     * @return duration
      */
     public Double getDuration() {
         return duration;
     }
 
     /**
+     * Set duration.
      *
      * @param duration
      */
@@ -109,14 +118,16 @@ public class Operation implements Serializable {
     }
 
     /**
+     * Get list of records.
      *
-     * @return
+     * @return records
      */
     public List<Record> getRecord() {
         return records;
     }
 
     /**
+     * Set list of records.
      *
      * @param records
      */

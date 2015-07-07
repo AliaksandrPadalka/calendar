@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
+ * class UserServiceImpl implements interface {@link UserService}
  *
  * @author Aliaksandr_Padalka
  */
@@ -21,8 +22,9 @@ public class UserServiceImpl implements UserService {
     private UserRepository repository;
 
     /**
+     * Get all users.
      *
-     * @return
+     * @return users
      */
     @Override
     public List<User> getAllUsers() {
@@ -32,9 +34,10 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
+     * Get user by <code>userId</code>.
      *
      * @param userId
-     * @return
+     * @return user
      */
     @Override
     public User getUserByUserId(final Long userId) {
@@ -42,9 +45,10 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
+     * Save new or update existing <code>user</code>.
      *
      * @param user
-     * @return
+     * @return user
      */
     @Override
     public User saveOrUpdateUser(final User user) {
@@ -52,9 +56,10 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
+     * Delete <code>user</code>.
      *
      * @param user
-     * @return
+     * @return <code>true</code> else if exception return <code>false</code>
      */
     @Override
     public boolean deleteUser(final User user) {
@@ -62,9 +67,10 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
+     * Delete user by <code>userId</code>.
      *
      * @param userId
-     * @return
+     * @return <code>true</code> else if exception return <code>false</code>
      */
     @Override
     public boolean deleteUser(final Long userId) {

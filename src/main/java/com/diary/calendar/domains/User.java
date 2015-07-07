@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
+ * Entity "User". Describe user name, list of contact phones, user role and list of records for the specific user.
  *
  * @author Aliaksandr_Padalka
  */
@@ -41,14 +42,16 @@ public class User implements Serializable {
     private List<Record> records;
 
     /**
+     * Get id.
      *
-     * @return
+     * @return id
      */
     public Long getId() {
         return id;
     }
 
     /**
+     * Set id.
      *
      * @param id
      */
@@ -57,14 +60,16 @@ public class User implements Serializable {
     }
 
     /**
+     * Get name.
      *
-     * @return
+     * @return name
      */
     public String getName() {
         return name;
     }
 
     /**
+     * Set name.
      *
      * @param name
      */
@@ -73,14 +78,16 @@ public class User implements Serializable {
     }
 
     /**
+     * Get phones.
      *
-     * @return
+     * @return phones
      */
     public List<Phone> getPhones() {
         return phones;
     }
 
     /**
+     * Set phones.
      *
      * @param phones
      */
@@ -89,14 +96,16 @@ public class User implements Serializable {
     }
 
     /**
+     * Get role.
      *
-     * @return
+     * @return role
      */
     public UserRole getRole() {
         return role;
     }
 
     /**
+     * Set role.
      *
      * @param role
      */
@@ -105,14 +114,16 @@ public class User implements Serializable {
     }
 
     /**
+     * Get records.
      *
-     * @return
+     * @return records
      */
     public List<Record> getRecords() {
         return records;
     }
 
     /**
+     * Set records.
      *
      * @param records
      */

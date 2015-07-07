@@ -17,6 +17,7 @@ import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
 /**
+ * Entity "Record". Describe user, date and list of operations for the specific record.
  *
  * @author Aliaksandr_Padalka
  */
@@ -41,14 +42,16 @@ public class Record implements Serializable {
     private DateTime date;
 
     /**
+     * Get id.
      *
-     * @return
+     * @return id
      */
     public Long getId() {
         return id;
     }
 
     /**
+     * Set id.
      *
      * @param id
      */
@@ -57,14 +60,16 @@ public class Record implements Serializable {
     }
 
     /**
+     * Get user.
      *
-     * @return
+     * @return user
      */
     public User getUser() {
         return user;
     }
 
     /**
+     * Set user.
      *
      * @param user
      */
@@ -73,14 +78,16 @@ public class Record implements Serializable {
     }
 
     /**
+     * Get operations.
      *
-     * @return
+     * @return operations
      */
     public List<Operation> getOperations() {
         return operations;
     }
 
     /**
+     * Set operations.
      *
      * @param operations
      */
@@ -89,14 +96,16 @@ public class Record implements Serializable {
     }
 
     /**
+     * Get date.
      *
-     * @return
+     * @return date
      */
     public DateTime getDate() {
         return date;
     }
 
     /**
+     * Set date.
      *
      * @param date
      */
