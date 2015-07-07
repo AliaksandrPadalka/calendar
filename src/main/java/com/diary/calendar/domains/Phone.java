@@ -23,8 +23,6 @@ import javax.persistence.Table;
 @Table(name = "phones")
 public class Phone implements Serializable {
 
-    private static final Long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "phoneId")

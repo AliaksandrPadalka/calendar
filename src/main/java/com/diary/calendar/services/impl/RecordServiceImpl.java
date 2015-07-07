@@ -11,6 +11,10 @@ import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ *
+ * @author Aliaksandr_Padalka
+ */
 public class RecordServiceImpl implements RecordService {
 
     private static final Logger LOG = Logger.getLogger(RecordServiceImpl.class.getName());
@@ -18,6 +22,10 @@ public class RecordServiceImpl implements RecordService {
     @Autowired
     private RecordRepository repository;
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Record> getAllRecord() {
         List<Record> records = new ArrayList<>();
@@ -25,6 +33,11 @@ public class RecordServiceImpl implements RecordService {
         return records;
     }
 
+    /**
+     *
+     * @param date
+     * @return
+     */
     @Override
     public List<Record> getRecordsByDate(final DateTime date) {
         List<Record> records = getAllRecord();
@@ -53,21 +66,41 @@ public class RecordServiceImpl implements RecordService {
         return record.getDate().isBefore(startDate.toInstant()) || record.getDate().isAfter(endDate.toInstant());
     }
 
+    /**
+     *
+     * @param recordId
+     * @return
+     */
     @Override
     public Record getRecordByRecordId(final Long recordId) {
         return repository.findOne(recordId);
     }
 
+    /**
+     *
+     * @param record
+     * @return
+     */
     @Override
     public Record saveOrUpdateRecord(final Record record) {
         return repository.save(record);
     }
 
+    /**
+     *
+     * @param record
+     * @return
+     */
     @Override
     public boolean deleteRecord(final Record record) {
         return deleteRecord(record.getId());
     }
 
+    /**
+     *
+     * @param recordId
+     * @return
+     */
     @Override
     public boolean deleteRecord(final Long recordId) {
         try {

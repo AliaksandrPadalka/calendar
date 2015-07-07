@@ -24,8 +24,6 @@ import org.joda.time.DateTime;
 @Table(name = "records")
 public class Record implements Serializable {
 
-    private static final Long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "recordId")
