@@ -16,9 +16,15 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
+/**
+ *
+ * @author Aliaksandr_Padalka
+ */
 @Entity
 @Table(name = "records")
 public class Record implements Serializable {
+
+    private static final Long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,34 +42,66 @@ public class Record implements Serializable {
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     private DateTime date;
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public User getUser() {
         return user;
     }
 
+    /**
+     *
+     * @param user
+     */
     public void setUser(User user) {
         this.user = user;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Operation> getOperations() {
         return operations;
     }
 
+    /**
+     *
+     * @param operations
+     */
     public void setOperations(List<Operation> operations) {
         this.operations = operations;
     }
 
+    /**
+     *
+     * @return
+     */
     public DateTime getDate() {
         return date;
     }
 
+    /**
+     *
+     * @param date
+     */
     public void setDate(DateTime date) {
         this.date = date;
     }

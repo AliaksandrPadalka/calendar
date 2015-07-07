@@ -14,6 +14,10 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+/**
+ *
+ * @author Aliaksandr_Padalka
+ */
 public class UserSecurityServiceImpl implements UserDetailsService {
 
     @Autowired

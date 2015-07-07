@@ -14,9 +14,15 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+/**
+ *
+ * @author Aliaksandr_Padalka
+ */
 @Entity
 @Table(name = "operations")
 public class Operation implements Serializable {
+
+    private static final Long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,42 +46,82 @@ public class Operation implements Serializable {
                 @JoinColumn(name = "recordId", nullable = false, updatable = false)})
     private List<Record> records;
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     *
+     * @param description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getDuration() {
         return duration;
     }
 
+    /**
+     *
+     * @param duration
+     */
     public void setDuration(Double duration) {
         this.duration = duration;
     }
 
+    /**
+     *
+     * @return <code>List<code><Record></code></code> records
+     */
     public List<Record> getRecord() {
         return records;
     }
 
+    /**
+     *
+     * @param records
+     */
     public void setRecord(List<Record> records) {
         this.records = records;
     }
