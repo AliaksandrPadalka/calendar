@@ -1,5 +1,15 @@
+/**
+ * <p>
+ * License
+ * </p>
+ */
 package com.diary.calendar.services.impl;
 
+/**
+ * <p>
+ * Imports
+ * </p>
+ */
 import com.diary.calendar.Constants;
 import com.diary.calendar.domains.User;
 import com.diary.calendar.enums.UserRole;
@@ -33,7 +43,7 @@ public class UserSecurityServiceImpl implements UserDetailsService {
      * @throws UsernameNotFoundException
      */
     @Override
-    public final UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
+    public final UserDetails loadUserByUsername(final String username)/* throws UsernameNotFoundException*/ {
 
         if (StringUtils.isEmpty(username)) {
             throw new UsernameNotFoundException("Username should not be empty.");

@@ -1,5 +1,15 @@
+/**
+ * <p>
+ * License
+ * </p>
+ */
 package com.diary.calendar.services;
 
+/**
+ * <p>
+ * Imports
+ * </p>
+ */
 import com.diary.calendar.domains.User;
 import java.util.List;
 

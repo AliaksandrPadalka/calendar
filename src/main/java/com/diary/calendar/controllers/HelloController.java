@@ -1,5 +1,15 @@
+/**
+ * <p>
+ * License
+ * </p>
+ */
 package com.diary.calendar.controllers;
 
+/**
+ * <p>
+ * Imports
+ * </p>
+ */
 import com.diary.calendar.Constants;
 import com.diary.calendar.services.OperationService;
 import com.diary.calendar.services.UserService;

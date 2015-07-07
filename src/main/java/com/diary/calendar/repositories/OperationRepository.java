@@ -1,5 +1,15 @@
+/**
+ * <p>
+ * License
+ * </p>
+ */
 package com.diary.calendar.repositories;
 
+/**
+ * <p>
+ * Imports
+ * </p>
+ */
 import com.diary.calendar.domains.Operation;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

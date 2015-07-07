@@ -1,5 +1,15 @@
+/**
+ * <p>
+ * License
+ * </p>
+ */
 package com.diary.calendar.domains;
 
+/**
+ * <p>
+ * Imports
+ * </p>
+ */
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;

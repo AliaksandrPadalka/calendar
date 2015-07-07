@@ -1,5 +1,15 @@
+/**
+ * <p>
+ * License
+ * </p>
+ */
 package com.diary.calendar.services.impl;
 
+/**
+ * <p>
+ * Imports
+ * </p>
+ */
 import com.diary.calendar.domains.Record;
 import com.diary.calendar.repositories.RecordRepository;
 import com.diary.calendar.services.RecordService;

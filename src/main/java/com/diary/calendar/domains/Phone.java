@@ -1,5 +1,15 @@
+/**
+ * <p>
+ * License
+ * </p>
+ */
 package com.diary.calendar.domains;
 
+/**
+ * <p>
+ * Imports
+ * </p>
+ */
 import com.diary.calendar.enums.PhoneType;
 import java.io.Serializable;
 import javax.persistence.CascadeType;
