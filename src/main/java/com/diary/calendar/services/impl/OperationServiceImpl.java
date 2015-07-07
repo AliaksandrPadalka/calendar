@@ -10,7 +10,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * class OperationServiceImpl implements interface {@link OperationService}
+ * <h3>class OperationServiceImpl implements interface {@link OperationService}</h3>
  *
  * @author Aliaksandr_Padalka
  */
@@ -22,58 +22,58 @@ public class OperationServiceImpl implements OperationService {
     private OperationRepository repository;
 
     /**
-     * Get all operations
+     * <h3>Get all operations.</h3>
      *
      * @return operations
      */
     @Override
-    public List<Operation> getAllOperations() {
+    public final List<Operation> getAllOperations() {
         List<Operation> operations = new ArrayList<>();
         operations.addAll((Collection<? extends Operation>) repository.findAll());
         return operations;
     }
 
     /**
-     * Get operation by <code>operationId</code>.
+     * <h3>Get operation by <code>operationId</code>.</h3>
      *
      * @param operationId
      * @return operation
      */
     @Override
-    public Operation getOperationByOperationId(final Long operationId) {
+    public final Operation getOperationByOperationId(final Long operationId) {
         return repository.findOne(operationId);
     }
 
     /**
-     * Save new or update existing <code>operation</code>.
+     * <h3>Save new or update existing <code>operation</code>.</h3>
      *
      * @param operation
      * @return operation
      */
     @Override
-    public Operation saveOrUpdateOperation(final Operation operation) {
+    public final Operation saveOrUpdateOperation(final Operation operation) {
         return repository.save(operation);
     }
 
     /**
-     * Delete <code>operation</code>.
+     * <h3>Delete <code>operation</code>.</h3>
      *
      * @param operation
      * @return <code>true</code> else if exception return <code>false</code>
      */
     @Override
-    public boolean deleteOperation(final Operation operation) {
+    public final boolean deleteOperation(final Operation operation) {
         return deleteOperation(operation.getId());
     }
 
     /**
-     * Delete operation by <code>operationId</code>.
+     * <h3>Delete operation by <code>operationId</code>.</h3>
      *
      * @param operationId
      * @return <code>true</code> else if exception return <code>false</code>
      */
     @Override
-    public boolean deleteOperation(final Long operationId) {
+    public final boolean deleteOperation(final Long operationId) {
         try {
             repository.delete(operationId);
             return true;

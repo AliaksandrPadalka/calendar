@@ -17,7 +17,8 @@ import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
 /**
- * Entity "Record". Describe user, date and list of operations for the specific record.
+ * <h3>Entity "Record".</h3>
+ * Describe user, date and list of operations for the specific record.
  *
  * @author Aliaksandr_Padalka
  */
@@ -42,74 +43,74 @@ public class Record implements Serializable {
     private DateTime date;
 
     /**
-     * Get id.
+     * <h3>Get id.</h3>
      *
      * @return id
      */
-    public Long getId() {
+    public final Long getId() {
         return id;
     }
 
     /**
-     * Set id.
+     * <h3>Set id.</h3>
      *
      * @param id
      */
-    public void setId(Long id) {
+    public final void setId(final Long id) {
         this.id = id;
     }
 
     /**
-     * Get user.
+     * <h3>Get user.</h3>
      *
      * @return user
      */
-    public User getUser() {
+    public final User getUser() {
         return user;
     }
 
     /**
-     * Set user.
+     * <h3>Set user.</h3>
      *
      * @param user
      */
-    public void setUser(User user) {
+    public final void setUser(final User user) {
         this.user = user;
     }
 
     /**
-     * Get operations.
+     * <h3>Get operations.</h3>
      *
      * @return operations
      */
-    public List<Operation> getOperations() {
+    public final List<Operation> getOperations() {
         return operations;
     }
 
     /**
-     * Set operations.
+     * <h3>Set operations.</h3>
      *
      * @param operations
      */
-    public void setOperations(List<Operation> operations) {
+    public final void setOperations(final List<Operation> operations) {
         this.operations = operations;
     }
 
     /**
-     * Get date.
+     * <h3>Get date.</h3>
      *
      * @return date
      */
-    public DateTime getDate() {
+    public final DateTime getDate() {
         return date;
     }
 
     /**
-     * Set date.
+     * <h3>Set date.</h3>
      *
      * @param date
      */
-    public void setDate(DateTime date) {
+    public final void setDate(final DateTime date) {
         this.date = date;
     }
 

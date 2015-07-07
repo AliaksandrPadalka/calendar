@@ -16,7 +16,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
- * Entity "Phone". Describe phone type, code, number and user of the specific phone.
+ * <h3>Entity "Phone".</h3>
+ * Describe phone type, code, number and user of the specific phone.
  *
  * @author Aliaksandr_Padalka
  */
@@ -44,92 +45,92 @@ public class Phone implements Serializable {
     private User user;
 
     /**
-     * Get id.
+     * <h3>Get id.</h3>
      *
      * @return id
      */
-    public Long getId() {
+    public final Long getId() {
         return id;
     }
 
     /**
-     * Set id.
+     * <h3>Set id.</h3>
      *
      * @param id
      */
-    public void setId(Long id) {
+    public final void setId(final Long id) {
         this.id = id;
     }
 
     /**
-     * Get type.
+     * <h3>Get type.</h3>
      *
      * @return type
      */
-    public PhoneType getType() {
+    public final PhoneType getType() {
         return type;
     }
 
     /**
-     * Set type.
+     * <h3>Set type.</h3>
      *
      * @param type
      */
-    public void setType(PhoneType type) {
+    public final void setType(final PhoneType type) {
         this.type = type;
     }
 
     /**
-     * Get code.
+     * <h3>Get code.</h3>
      *
      * @return code
      */
-    public String getCode() {
+    public final String getCode() {
         return code;
     }
 
     /**
-     * Set code.
+     * <h3>Set code.</h3>
      *
      * @param code
      */
-    public void setCode(String code) {
+    public final void setCode(final String code) {
         this.code = code;
     }
 
     /**
-     * Get number.
+     * <h3>Get number.</h3>
      *
      * @return number
      */
-    public String getNumber() {
+    public final String getNumber() {
         return number;
     }
 
     /**
-     * Set number.
+     * <h3>Set number.</h3>
      *
      * @param number
      */
-    public void setNumber(String number) {
+    public final void setNumber(final String number) {
         this.number = number;
     }
 
     /**
-     * Get user.
+     * <h3>Get user.</h3>
      *
      * @return user
      */
-    public User getUser() {
+    public final User getUser() {
         return user;
     }
 
     /**
-     * Set user.
+     * <h3>Set user.</h3>
      *
      * @param user
      */
-    public void setUser(User user) {
+    public final void setUser(final User user) {
         this.user = user;
     }
 

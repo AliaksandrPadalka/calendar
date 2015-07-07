@@ -15,7 +15,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 /**
- * Entity "Operation". Describe short name, duration and description of the specific operation.
+ * <h3>Entity "Operation".</h3>
+ * Describe short name, duration and description of the specific operation.
  *
  * @author Aliaksandr_Padalka
  */
@@ -46,92 +47,92 @@ public class Operation implements Serializable {
     private List<Record> records;
 
     /**
-     * Return id.
+     * <h3>Return id.</h3>
      *
      * @return id
      */
-    public Long getId() {
+    public final Long getId() {
         return id;
     }
 
     /**
-     * Set id.
+     * <h3>Set id.</h3>
      *
      * @param id
      */
-    public void setId(Long id) {
+    public final void setId(final Long id) {
         this.id = id;
     }
 
     /**
-     * Get name.
+     * <h3>Get name.</h3>
      *
      * @return name
      */
-    public String getName() {
+    public final String getName() {
         return name;
     }
 
     /**
-     * Set name.
+     * <h3>Set name.</h3>
      *
      * @param name
      */
-    public void setName(String name) {
+    public final void setName(final String name) {
         this.name = name;
     }
 
     /**
-     * Get description.
+     * <h3>Get description.</h3>
      *
      * @return description
      */
-    public String getDescription() {
+    public final String getDescription() {
         return description;
     }
 
     /**
-     * Set description.
+     * <h3>Set description.</h3>
      *
      * @param description
      */
-    public void setDescription(String description) {
+    public final void setDescription(final String description) {
         this.description = description;
     }
 
     /**
-     * Get duration.
+     * <h3>Get duration.</h3>
      *
      * @return duration
      */
-    public Double getDuration() {
+    public final Double getDuration() {
         return duration;
     }
 
     /**
-     * Set duration.
+     * <h3>Set duration.</h3>
      *
      * @param duration
      */
-    public void setDuration(Double duration) {
+    public final void setDuration(final Double duration) {
         this.duration = duration;
     }
 
     /**
-     * Get list of records.
+     * <h3>Get list of records.</h3>
      *
      * @return records
      */
-    public List<Record> getRecord() {
+    public final List<Record> getRecord() {
         return records;
     }
 
     /**
-     * Set list of records.
+     * <h3>Set list of records.</h3>
      *
      * @param records
      */
-    public void setRecord(List<Record> records) {
+    public final void setRecord(final List<Record> records) {
         this.records = records;
     }
 

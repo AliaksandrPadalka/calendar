@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * OperationRepository for Spring Data
+ * <h3>OperationRepository for Spring Data</h3>
  *
  * @author Aliaksandr_Padalka
  */

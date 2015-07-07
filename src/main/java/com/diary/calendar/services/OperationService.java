@@ -4,21 +4,21 @@ import com.diary.calendar.domains.Operation;
 import java.util.List;
 
 /**
- * interface OperationService
+ * <h3>interface OperationService</h3>
  *
  * @author Aliaksandr_Padalka
  */
 public interface OperationService {
 
     /**
-     * Get all operations
+     * <h3>Get all operations.</h3>
      *
      * @return operations
      */
     List<Operation> getAllOperations();
 
     /**
-     * Get operation by <code>operationId</code>.
+     * <h3>Get operation by <code>operationId</code>.</h3>
      *
      * @param operationId
      * @return operation
@@ -26,7 +26,7 @@ public interface OperationService {
     Operation getOperationByOperationId(final Long operationId);
 
     /**
-     * Save new or update existing <code>operation</code>.
+     * <h3>Save new or update existing <code>operation</code>.</h3>
      *
      * @param operation
      * @return operation
@@ -34,7 +34,7 @@ public interface OperationService {
     Operation saveOrUpdateOperation(final Operation operation);
 
     /**
-     * Delete <code>operation</code>.
+     * <h3>Delete <code>operation</code>.</h3>
      *
      * @param operation
      * @return <code>true</code> else if exception return <code>false</code>
@@ -42,7 +42,7 @@ public interface OperationService {
     boolean deleteOperation(final Operation operation);
 
     /**
-     * Delete operation by <code>operationId</code>.
+     * <h3>Delete operation by <code>operationId</code>.</h3>
      *
      * @param operationId
      * @return <code>true</code> else if exception return <code>false</code>

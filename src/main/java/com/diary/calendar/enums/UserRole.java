@@ -1,26 +1,26 @@
 package com.diary.calendar.enums;
 
 /**
- * User roles.
+ * <h3>User roles.</h3>
  *
  * @author Aliaksandr_Padalka
  */
 public enum UserRole {
 
     /**
-     * Anonimous
+     * <h3>Anonimous</h3>
      */
     ANONIMOUS,
     /**
-     * User
+     * <h3>User</h3>
      */
     USER,
     /**
-     * Owner
+     * <h3>Owner</h3>
      */
     OWNER,
     /**
-     * Administrator
+     * <h3>Administrator</h3>
      */
     ADMIN
 

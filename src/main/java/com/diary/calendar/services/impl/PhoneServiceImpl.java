@@ -10,7 +10,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * class PhoneServiceImpl implements interface {@link PhoneService}
+ * <h3>class PhoneServiceImpl implements interface {@link PhoneService}</h3>
  *
  * @author Aliaksandr_Padalka
  */
@@ -22,25 +22,25 @@ public class PhoneServiceImpl implements PhoneService {
     private PhoneRepository repository;
 
     /**
-     * Get all phones.
+     * <h3>Get all phones.</h3>
      *
      * @return phones
      */
     @Override
-    public List<Phone> getAllPhones() {
+    public final List<Phone> getAllPhones() {
         List<Phone> phones = new ArrayList<>();
         phones.addAll((Collection<? extends Phone>) repository.findAll());
         return phones;
     }
 
     /**
-     * Get all phones by <code>userId</code>.
+     * <h3>Get all phones by <code>userId</code>.</h3>
      *
      * @param userId
      * @return phones
      */
     @Override
-    public List<Phone> getPhonesByUserId(final Long userId) {
+    public final List<Phone> getPhonesByUserId(final Long userId) {
         List<Phone> phones = getAllPhones();
 
         for (Phone phone : phones) {
@@ -53,46 +53,46 @@ public class PhoneServiceImpl implements PhoneService {
     }
 
     /**
-     * Get phone by <code>phoneId</code>.
+     * <h3>Get phone by <code>phoneId</code>.</h3>
      *
      * @param phoneId
      * @return phone
      */
     @Override
-    public Phone getPhoneByPhoneId(final Long phoneId) {
+    public final Phone getPhoneByPhoneId(final Long phoneId) {
         return repository.findOne(phoneId);
     }
 
     /**
-     * Save new or update existing <code>phone</code>.
+     * <h3>Save new or update existing <code>phone</code>.</h3>
      *
      * @param phone
      * @return phone
      */
     @Override
-    public Phone saveOrUpdatePhone(final Phone phone) {
+    public final Phone saveOrUpdatePhone(final Phone phone) {
         return repository.save(phone);
     }
 
     /**
-     * Delete <code>phone</code>.
+     * <h3>Delete <code>phone</code>.</h3>
      *
      * @param phone
      * @return <code>true</code> else if exception return <code>false</code>
      */
     @Override
-    public boolean deletePhone(final Phone phone) {
+    public final boolean deletePhone(final Phone phone) {
         return deletePhone(phone.getId());
     }
 
     /**
-     * Delete phone by <code>phoneId</code>.
+     * <h3>Delete phone by <code>phoneId</code>.</h3>
      *
      * @param phoneId
      * @return <code>true</code> else if exception return <code>false</code>
      */
     @Override
-    public boolean deletePhone(final Long phoneId) {
+    public final boolean deletePhone(final Long phoneId) {
         try {
             repository.delete(phoneId);
             return true;

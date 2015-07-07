@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
+ * <h3>class LoginController</h3>
  *
  * @author Aliaksandr_Padalka
  */
@@ -14,24 +15,24 @@ import org.springframework.web.servlet.ModelAndView;
 public class LoginController {
 
     /**
-     * Return administrative view.
+     * <h3>Return administrative view.</h3>
      *
      * @return model
      */
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public ModelAndView showAdminPage() {
+    public final ModelAndView showAdminPage() {
         ModelAndView model = new ModelAndView();
         model.setViewName(Constants.Pages.URL_PAGE_ADMIN);
         return model;
     }
 
     /**
-     * Return view if access denied.
+     * <h3>Return view if access denied.</h3>
      *
      * @return model
      */
     @RequestMapping(value = {"/denied", "/login", "/logout"}, method = RequestMethod.GET)
-    public ModelAndView showDeniedPage() {
+    public final ModelAndView showDeniedPage() {
         ModelAndView model = new ModelAndView();
         model.setViewName(Constants.Pages.URL_PAGE_403);
         return model;

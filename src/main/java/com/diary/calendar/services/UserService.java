@@ -4,49 +4,49 @@ import com.diary.calendar.domains.User;
 import java.util.List;
 
 /**
- * interface UserService
+ * <h3>interface UserService</h3>
  *
  * @author Aliaksandr_Padalka
  */
 public interface UserService {
 
     /**
-     * Get all users.
+     * <h3>Get all users.</h3>
      *
      * @return users
      */
     List<User> getAllUsers();
 
     /**
-     * Get user by <code>userId</code>.
+     * <h3>Get user by <code>userId</code>.</h3>
      *
      * @param userId
      * @return user
      */
-    User getUserByUserId(Long userId);
+    User getUserByUserId(final Long userId);
 
     /**
-     * Save new or update existing <code>user</code>.
+     * <h3>Save new or update existing <code>user</code>.</h3>
      *
      * @param user
      * @return user
      */
-    User saveOrUpdateUser(User user);
+    User saveOrUpdateUser(final User user);
 
     /**
-     * Delete <code>user</code>.
+     * <h3>Delete <code>user</code>.</h3>
      *
      * @param user
      * @return <code>true</code> else if exception return <code>false</code>
      */
-    boolean deleteUser(User user);
+    boolean deleteUser(final User user);
 
     /**
-     * Delete user by <code>userId</code>.
+     * <h3>Delete user by <code>userId</code>.</h3>
      *
      * @param userId
      * @return <code>true</code> else if exception return <code>false</code>
      */
-    boolean deleteUser(Long userId);
+    boolean deleteUser(final Long userId);
 
 }

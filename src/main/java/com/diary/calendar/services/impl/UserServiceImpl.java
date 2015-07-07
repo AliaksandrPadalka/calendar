@@ -10,7 +10,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * class UserServiceImpl implements interface {@link UserService}
+ * <h3>class UserServiceImpl implements interface {@link UserService}</h3>
  *
  * @author Aliaksandr_Padalka
  */
@@ -22,58 +22,58 @@ public class UserServiceImpl implements UserService {
     private UserRepository repository;
 
     /**
-     * Get all users.
+     * <h3>Get all users.</h3>
      *
      * @return users
      */
     @Override
-    public List<User> getAllUsers() {
+    public final List<User> getAllUsers() {
         List<User> users = new ArrayList<>();
         users.addAll((Collection<? extends User>) repository.findAll());
         return users;
     }
 
     /**
-     * Get user by <code>userId</code>.
+     * <h3>Get user by <code>userId</code>.</h3>
      *
      * @param userId
      * @return user
      */
     @Override
-    public User getUserByUserId(final Long userId) {
+    public final User getUserByUserId(final Long userId) {
         return repository.findOne(userId);
     }
 
     /**
-     * Save new or update existing <code>user</code>.
+     * <h3>Save new or update existing <code>user</code>.</h3>
      *
      * @param user
      * @return user
      */
     @Override
-    public User saveOrUpdateUser(final User user) {
+    public final User saveOrUpdateUser(final User user) {
         return repository.save(user);
     }
 
     /**
-     * Delete <code>user</code>.
+     * <h3>Delete <code>user</code>.</h3>
      *
      * @param user
      * @return <code>true</code> else if exception return <code>false</code>
      */
     @Override
-    public boolean deleteUser(final User user) {
+    public final boolean deleteUser(final User user) {
         return deleteUser(user.getId());
     }
 
     /**
-     * Delete user by <code>userId</code>.
+     * <h3>Delete user by <code>userId</code>.</h3>
      *
      * @param userId
      * @return <code>true</code> else if exception return <code>false</code>
      */
     @Override
-    public boolean deleteUser(final Long userId) {
+    public final boolean deleteUser(final Long userId) {
         try {
             repository.delete(userId);
             return true;

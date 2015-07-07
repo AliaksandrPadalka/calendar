@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * PhoneRepository for Spring Data
+ * <h3>PhoneRepository for Spring Data</h3>
  *
  * @author Aliaksandr_Padalka
  */

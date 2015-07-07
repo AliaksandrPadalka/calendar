@@ -5,57 +5,57 @@ import java.util.List;
 import org.joda.time.DateTime;
 
 /**
- * interface RecordService
+ * <h3>interface RecordService</h3>
  *
  * @author Aliaksandr_Padalka
  */
 public interface RecordService {
 
     /**
-     * Get all records.
+     * <h3>Get all records.</h3>
      *
      * @return records
      */
     List<Record> getAllRecord();
 
     /**
-     * Get records by specific <code>date</code>.
+     * <h3>Get records by specific <code>date</code>.</h3>
      *
      * @param date
      * @return records
      */
-    List<Record> getRecordsByDate(DateTime date);
+    List<Record> getRecordsByDate(final DateTime date);
 
     /**
-     * Get record by <code>recordId</code>.
+     * <h3>Get record by <code>recordId</code>.</h3>
      *
      * @param recordId
      * @return record
      */
-    Record getRecordByRecordId(Long recordId);
+    Record getRecordByRecordId(final Long recordId);
 
     /**
-     * Save new or update existing <code>record</code>.
+     * <h3>Save new or update existing <code>record</code>.</h3>
      *
      * @param record
      * @return record
      */
-    Record saveOrUpdateRecord(Record record);
+    Record saveOrUpdateRecord(final Record record);
 
     /**
-     * Delete <code>record</code>.
+     * <h3>Delete <code>record</code>.</h3>
      *
      * @param record
      * @return <code>true</code> else if exception return <code>false</code>
      */
-    boolean deleteRecord(Record record);
+    boolean deleteRecord(final Record record);
 
     /**
-     * Delete record by <tt>recordId</tt>.
+     * <h3>Delete record by <code>recordId</code>.</h3>
      *
      * @param recordId
      * @return <code>true</code> else if exception return <code>false</code>
      */
-    boolean deleteRecord(Long recordId);
+    boolean deleteRecord(final Long recordId);
 
 }

@@ -12,7 +12,7 @@ import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * class RecordServiceImpl implements interface {@link RecordService}
+ * <h3>class RecordServiceImpl implements interface {@link RecordService}</h3>
  *
  * @author Aliaksandr_Padalka
  */
@@ -24,25 +24,25 @@ public class RecordServiceImpl implements RecordService {
     private RecordRepository repository;
 
     /**
-     * Get all records.
+     * <h3>Get all records.</h3>
      *
      * @return records
      */
     @Override
-    public List<Record> getAllRecord() {
+    public final List<Record> getAllRecord() {
         List<Record> records = new ArrayList<>();
         records.addAll((Collection<? extends Record>) repository.findAll());
         return records;
     }
 
     /**
-     * Get records by specific <code>date</code>.
+     * <h3>Get records by specific <code>date</code>.</h3>
      *
      * @param date
      * @return records
      */
     @Override
-    public List<Record> getRecordsByDate(final DateTime date) {
+    public final List<Record> getRecordsByDate(final DateTime date) {
         List<Record> records = getAllRecord();
 
         for (Iterator<Record> iterator = records.iterator(); iterator.hasNext();) {
@@ -70,46 +70,46 @@ public class RecordServiceImpl implements RecordService {
     }
 
     /**
-     * Get record by <code>recordId</code>.
+     * <h3>Get record by <code>recordId</code>.</h3>
      *
      * @param recordId
      * @return record
      */
     @Override
-    public Record getRecordByRecordId(final Long recordId) {
+    public final Record getRecordByRecordId(final Long recordId) {
         return repository.findOne(recordId);
     }
 
     /**
-     * Save new or update existing <code>record</code>.
+     * <h3>Save new or update existing <code>record</code>.</h3>
      *
      * @param record
      * @return record
      */
     @Override
-    public Record saveOrUpdateRecord(final Record record) {
+    public final Record saveOrUpdateRecord(final Record record) {
         return repository.save(record);
     }
 
     /**
-     * Delete <code>record</code>.
+     * <h3>Delete <code>record</code>.</h3>
      *
      * @param record
      * @return <code>true</code> else if exception return <code>false</code>
      */
     @Override
-    public boolean deleteRecord(final Record record) {
+    public final boolean deleteRecord(final Record record) {
         return deleteRecord(record.getId());
     }
 
     /**
-     * Delete record by <tt>recordId</tt>.
+     * <h3>Delete record by <code>recordId</code>.</h3>
      *
      * @param recordId
      * @return <code>true</code> else if exception return <code>false</code>
      */
     @Override
-    public boolean deleteRecord(final Long recordId) {
+    public final boolean deleteRecord(final Long recordId) {
         try {
             repository.delete(recordId);
             return true;

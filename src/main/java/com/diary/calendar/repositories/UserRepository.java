@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * UserRepository for Spring Data
+ * <h3>UserRepository for Spring Data</h3>
  *
  * @author Aliaksandr_Padalka
  */

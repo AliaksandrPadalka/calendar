@@ -16,7 +16,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 /**
- * class UserSecurityServiceImpl implements interface {@link UserDetailsService}
+ * <h3>class UserSecurityServiceImpl implements interface {@link UserDetailsService}</h3>
  *
  * @author Aliaksandr_Padalka
  */
@@ -26,14 +26,14 @@ public class UserSecurityServiceImpl implements UserDetailsService {
     private UserRepository repository;
 
     /**
-     * Get {@link UserDetails} <code>user</code>
+     * <h3>Get {@link UserDetails} <code>user</code>.</h3>
      *
      * @param username
      * @return userDetails
      * @throws UsernameNotFoundException
      */
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public final UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
 
         if (StringUtils.isEmpty(username)) {
             throw new UsernameNotFoundException("Username should not be empty.");
@@ -55,7 +55,7 @@ public class UserSecurityServiceImpl implements UserDetailsService {
         return userDetails;
     }
 
-    private Collection<? extends GrantedAuthority> getAuthorities(UserRole role) {
+    private Collection<? extends GrantedAuthority> getAuthorities(final UserRole role) {
         List<SimpleGrantedAuthority> authList = new ArrayList<>();
         authList.add(new SimpleGrantedAuthority(Constants.Access.ANONIMOUS));
 

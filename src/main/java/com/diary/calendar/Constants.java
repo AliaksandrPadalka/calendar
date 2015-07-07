@@ -1,42 +1,42 @@
 package com.diary.calendar;
 
 /**
- * Class of constants
+ * <h3>Class of constants</h3>
  *
  * @author Aliaksandr_Padalka
  */
 public final class Constants {
 
     /**
-     * Constants of user access
+     * <h3>Constants of user access</h3>
      */
     public static final class Access {
 
         /**
-         * Constant ANONIMOUS
+         * <h3>Constant ANONIMOUS</h3>
          */
         public static final String ANONIMOUS = "ANONIMOUS";
     }
 
     /**
-     * Constants of page names
+     * <h3>Constants of page names</h3>
      */
     public static final class Pages {
 
         /**
-         * Constant URL_PAGE_HELLO
+         * <h3>Constant URL_PAGE_HELLO</h3>
          */
         public static final String URL_PAGE_HELLO = "hello";
         /**
-         * Constant URL_PAGE_403
+         * <h3>Constant URL_PAGE_403</h3>
          */
         public static final String URL_PAGE_403 = "403";
         /**
-         * Constant URL_PAGE_ADMIN
+         * <h3>Constant URL_PAGE_ADMIN</h3>
          */
         public static final String URL_PAGE_ADMIN = "admin";
         /**
-         * Constant URL_PAGE_ERROR
+         * <h3>Constant URL_PAGE_ERROR</h3>
          */
         public static final String URL_PAGE_ERROR = "error";
     }

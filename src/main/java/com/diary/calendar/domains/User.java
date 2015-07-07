@@ -15,7 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
- * Entity "User". Describe user name, list of contact phones, user role and list of records for the specific user.
+ * <h3>Entity "User".</h3>
+ * Describe user name, list of contact phones, user role and list of records for the specific user.
  *
  * @author Aliaksandr_Padalka
  */
@@ -42,92 +43,92 @@ public class User implements Serializable {
     private List<Record> records;
 
     /**
-     * Get id.
+     * <h3>Get id.</h3>
      *
      * @return id
      */
-    public Long getId() {
+    public final Long getId() {
         return id;
     }
 
     /**
-     * Set id.
+     * <h3>Set id.</h3>
      *
      * @param id
      */
-    public void setId(Long id) {
+    public final void setId(final Long id) {
         this.id = id;
     }
 
     /**
-     * Get name.
+     * <h3>Get name.</h3>
      *
      * @return name
      */
-    public String getName() {
+    public final String getName() {
         return name;
     }
 
     /**
-     * Set name.
+     * <h3>Set name.</h3>
      *
      * @param name
      */
-    public void setName(String name) {
+    public final void setName(final String name) {
         this.name = name;
     }
 
     /**
-     * Get phones.
+     * <h3>Get phones.</h3>
      *
      * @return phones
      */
-    public List<Phone> getPhones() {
+    public final List<Phone> getPhones() {
         return phones;
     }
 
     /**
-     * Set phones.
+     * <h3>Set phones.</h3>
      *
      * @param phones
      */
-    public void setPhones(List<Phone> phones) {
+    public final void setPhones(final List<Phone> phones) {
         this.phones = phones;
     }
 
     /**
-     * Get role.
+     * <h3>Get role.</h3>
      *
      * @return role
      */
-    public UserRole getRole() {
+    public final UserRole getRole() {
         return role;
     }
 
     /**
-     * Set role.
+     * <h3>Set role.</h3>
      *
      * @param role
      */
-    public void setRole(UserRole role) {
+    public final void setRole(final UserRole role) {
         this.role = role;
     }
 
     /**
-     * Get records.
+     * <h3>Get records.</h3>
      *
      * @return records
      */
-    public List<Record> getRecords() {
+    public final List<Record> getRecords() {
         return records;
     }
 
     /**
-     * Set records.
+     * <h3>Set records.</h3>
      *
      * @param records
      */
-    public void setRecords(List<Record> records) {
+    public final void setRecords(final List<Record> records) {
         this.records = records;
     }
 

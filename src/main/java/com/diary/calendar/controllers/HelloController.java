@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
+ * <h3>class HelloController</h3>
  *
  * @author Aliaksandr_Padalka
  */
@@ -22,12 +23,12 @@ public class HelloController {
     private OperationService operationService;
 
     /**
-     * Return default view.
+     * <h3>Return default view.</h3>
      *
      * @return model
      */
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView getDefaultPage() {
+    public final ModelAndView getDefaultPage() {
         ModelAndView model = new ModelAndView();
         model.addObject("message", "Spring 3 MVC Hello World !!!");
         model.addObject("users", userService.getAllUsers());
