@@ -41,13 +41,7 @@ public class UserSecurityServiceImpl implements UserDetailsService {
         List<SimpleGrantedAuthority> authList = new ArrayList<>();
         authList.add(new SimpleGrantedAuthority(Constants.ANONIMOUS));
 
-        if (UserRole.USER.equals(role)) {
-            authList.add(new SimpleGrantedAuthority(role.name()));
-        }
-        if (UserRole.OWNER.equals(role)) {
-            authList.add(new SimpleGrantedAuthority(role.name()));
-        }
-        if (UserRole.ADMIN.equals(role)) {
+        if (role != null) {
             authList.add(new SimpleGrantedAuthority(role.name()));
         }
 
