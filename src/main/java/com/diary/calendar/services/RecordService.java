@@ -27,7 +27,7 @@ public interface RecordService {
     List<Record> getRecordsByDate(DateTime date);
 
     /**
-     * Get record by <code>recordId<code>.
+     * Get record by <code>recordId</code>.
      *
      * @param recordId
      * @return record

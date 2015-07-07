@@ -70,7 +70,7 @@ public class RecordServiceImpl implements RecordService {
     }
 
     /**
-     * Get record by <code>recordId<code>.
+     * Get record by <code>recordId</code>.
      *
      * @param recordId
      * @return record
