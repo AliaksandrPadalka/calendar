@@ -1,15 +1,5 @@
-/**
- * <p>
- * License
- * </p>
- */
 package com.diary.calendar.services.impl;
 
-/**
- * <p>
- * Imports
- * </p>
- */
 import com.diary.calendar.domains.Phone;
 import com.diary.calendar.repositories.PhoneRepository;
 import com.diary.calendar.services.PhoneService;
@@ -26,8 +16,14 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class PhoneServiceImpl implements PhoneService {
 
+    /**
+     * <code>Logger</code>
+     */
     private static final Logger LOG = Logger.getLogger(PhoneServiceImpl.class.getName());
 
+    /**
+     * <code>PhoneRepository bean</code>
+     */
     @Autowired
     private PhoneRepository repository;
 
@@ -46,7 +42,7 @@ public class PhoneServiceImpl implements PhoneService {
     /**
      * <h3>Get all phones by <code>userId</code>.</h3>
      *
-     * @param userId
+     * @param userId as Long
      * @return phones
      */
     @Override
@@ -65,7 +61,7 @@ public class PhoneServiceImpl implements PhoneService {
     /**
      * <h3>Get phone by <code>phoneId</code>.</h3>
      *
-     * @param phoneId
+     * @param phoneId as Long
      * @return phone
      */
     @Override
@@ -76,7 +72,7 @@ public class PhoneServiceImpl implements PhoneService {
     /**
      * <h3>Save new or update existing <code>phone</code>.</h3>
      *
-     * @param phone
+     * @param phone as Phone
      * @return phone
      */
     @Override
@@ -87,7 +83,7 @@ public class PhoneServiceImpl implements PhoneService {
     /**
      * <h3>Delete <code>phone</code>.</h3>
      *
-     * @param phone
+     * @param phone as Phone
      * @return <code>true</code> else if exception return <code>false</code>
      */
     @Override
@@ -98,7 +94,7 @@ public class PhoneServiceImpl implements PhoneService {
     /**
      * <h3>Delete phone by <code>phoneId</code>.</h3>
      *
-     * @param phoneId
+     * @param phoneId as Long
      * @return <code>true</code> else if exception return <code>false</code>
      */
     @Override

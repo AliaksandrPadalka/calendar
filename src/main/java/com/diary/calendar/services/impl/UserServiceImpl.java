@@ -1,15 +1,5 @@
-/**
- * <p>
- * License
- * </p>
- */
 package com.diary.calendar.services.impl;
 
-/**
- * <p>
- * Imports
- * </p>
- */
 import com.diary.calendar.domains.User;
 import com.diary.calendar.repositories.UserRepository;
 import com.diary.calendar.services.UserService;
@@ -26,8 +16,14 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class UserServiceImpl implements UserService {
 
+    /**
+     * <code>Logger</code>
+     */
     private static final Logger LOG = Logger.getLogger(UserServiceImpl.class.getName());
 
+    /**
+     * <code>UserRepository bean</code>
+     */
     @Autowired
     private UserRepository repository;
 
@@ -46,7 +42,7 @@ public class UserServiceImpl implements UserService {
     /**
      * <h3>Get user by <code>userId</code>.</h3>
      *
-     * @param userId
+     * @param userId as Long
      * @return user
      */
     @Override
@@ -57,7 +53,7 @@ public class UserServiceImpl implements UserService {
     /**
      * <h3>Save new or update existing <code>user</code>.</h3>
      *
-     * @param user
+     * @param user as User
      * @return user
      */
     @Override
@@ -68,7 +64,7 @@ public class UserServiceImpl implements UserService {
     /**
      * <h3>Delete <code>user</code>.</h3>
      *
-     * @param user
+     * @param user as User
      * @return <code>true</code> else if exception return <code>false</code>
      */
     @Override
@@ -79,7 +75,7 @@ public class UserServiceImpl implements UserService {
     /**
      * <h3>Delete user by <code>userId</code>.</h3>
      *
-     * @param userId
+     * @param userId as Long
      * @return <code>true</code> else if exception return <code>false</code>
      */
     @Override

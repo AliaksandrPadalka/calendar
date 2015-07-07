@@ -1,15 +1,5 @@
-/**
- * <p>
- * License
- * </p>
- */
 package com.diary.calendar.domains;
 
-/**
- * <p>
- * Imports
- * </p>
- */
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -34,20 +24,35 @@ import javax.persistence.Table;
 @Table(name = "operations")
 public class Operation implements Serializable {
 
+    /**
+     * <code>Id</code>
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "operationId")
     private Long id;
 
+    /**
+     * <code>Name</code>
+     */
     @Column(name = "name")
     private String name;
 
+    /**
+     * <code>Description</code>
+     */
     @Column(name = "description")
     private String description;
 
+    /**
+     * <code>Duration</code>
+     */
     @Column(name = "duration")
     private Double duration;
 
+    /**
+     * <code>Records</code>
+     */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "user_chooses",
             joinColumns = {
@@ -68,7 +73,7 @@ public class Operation implements Serializable {
     /**
      * <h3>Set id.</h3>
      *
-     * @param id
+     * @param id as Long
      */
     public final void setId(final Long id) {
         this.id = id;
@@ -86,7 +91,7 @@ public class Operation implements Serializable {
     /**
      * <h3>Set name.</h3>
      *
-     * @param name
+     * @param name as Name
      */
     public final void setName(final String name) {
         this.name = name;
@@ -104,7 +109,7 @@ public class Operation implements Serializable {
     /**
      * <h3>Set description.</h3>
      *
-     * @param description
+     * @param description as String
      */
     public final void setDescription(final String description) {
         this.description = description;
@@ -122,7 +127,7 @@ public class Operation implements Serializable {
     /**
      * <h3>Set duration.</h3>
      *
-     * @param duration
+     * @param duration as String
      */
     public final void setDuration(final Double duration) {
         this.duration = duration;
@@ -140,7 +145,7 @@ public class Operation implements Serializable {
     /**
      * <h3>Set list of records.</h3>
      *
-     * @param records
+     * @param records as List&lt;Record&gt;
      */
     public final void setRecord(final List<Record> records) {
         this.records = records;

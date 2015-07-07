@@ -1,15 +1,5 @@
-/**
- * <p>
- * License
- * </p>
- */
 package com.diary.calendar.repositories;
 
-/**
- * <p>
- * Imports
- * </p>
- */
 import com.diary.calendar.domains.Phone;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

@@ -1,15 +1,5 @@
-/**
- * <p>
- * License
- * </p>
- */
 package com.diary.calendar.services;
 
-/**
- * <p>
- * Imports
- * </p>
- */
 import com.diary.calendar.domains.Phone;
 import java.util.List;
 
@@ -30,7 +20,7 @@ public interface PhoneService {
     /**
      * <h3>Get all phones by <code>userId</code>.</h3>
      *
-     * @param userId
+     * @param userId as Long
      * @return phones
      */
     List<Phone> getPhonesByUserId(final Long userId);
@@ -38,7 +28,7 @@ public interface PhoneService {
     /**
      * <h3>Get phone by <code>phoneId</code>.</h3>
      *
-     * @param phoneId
+     * @param phoneId as Long
      * @return phone
      */
     Phone getPhoneByPhoneId(final Long phoneId);
@@ -46,7 +36,7 @@ public interface PhoneService {
     /**
      * <h3>Save new or update existing <code>phone</code>.</h3>
      *
-     * @param phone
+     * @param phone as Phone
      * @return phone
      */
     Phone saveOrUpdatePhone(final Phone phone);
@@ -54,7 +44,7 @@ public interface PhoneService {
     /**
      * <h3>Delete <code>phone</code>.</h3>
      *
-     * @param phone
+     * @param phone as Phone
      * @return <code>true</code> else if exception return <code>false</code>
      */
     boolean deletePhone(final Phone phone);
@@ -62,7 +52,7 @@ public interface PhoneService {
     /**
      * <h3>Delete phone by <code>phoneId</code>.</h3>
      *
-     * @param phoneId
+     * @param phoneId as Long
      * @return <code>true</code> else if exception return <code>false</code>
      */
     boolean deletePhone(final Long phoneId);

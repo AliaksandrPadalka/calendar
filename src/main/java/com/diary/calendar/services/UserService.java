@@ -1,15 +1,5 @@
-/**
- * <p>
- * License
- * </p>
- */
 package com.diary.calendar.services;
 
-/**
- * <p>
- * Imports
- * </p>
- */
 import com.diary.calendar.domains.User;
 import java.util.List;
 
@@ -30,7 +20,7 @@ public interface UserService {
     /**
      * <h3>Get user by <code>userId</code>.</h3>
      *
-     * @param userId
+     * @param userId as Long
      * @return user
      */
     User getUserByUserId(final Long userId);
@@ -38,7 +28,7 @@ public interface UserService {
     /**
      * <h3>Save new or update existing <code>user</code>.</h3>
      *
-     * @param user
+     * @param user as User
      * @return user
      */
     User saveOrUpdateUser(final User user);
@@ -46,7 +36,7 @@ public interface UserService {
     /**
      * <h3>Delete <code>user</code>.</h3>
      *
-     * @param user
+     * @param user as User
      * @return <code>true</code> else if exception return <code>false</code>
      */
     boolean deleteUser(final User user);
@@ -54,7 +44,7 @@ public interface UserService {
     /**
      * <h3>Delete user by <code>userId</code>.</h3>
      *
-     * @param userId
+     * @param userId as Long
      * @return <code>true</code> else if exception return <code>false</code>
      */
     boolean deleteUser(final Long userId);

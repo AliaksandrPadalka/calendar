@@ -39,6 +39,7 @@
         <maven.compiler.version>2.3.2</maven.compiler.version>
         <maven.dependency.version>2.10</maven.dependency.version>
         <liquibase.maven.version>3.3.5</liquibase.maven.version>
+        <maven.checkstyle.version>2.15</maven.checkstyle.version>
     </properties>
 
     <profiles>
@@ -252,6 +253,25 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${maven.checkstyle.version}</version>
+                <executions>
+                    <execution>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <configLocation>${basedir}/config/checkstyle.xml</configLocation>
+                    <excludes>**/package-info.java</excludes>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 

@@ -1,15 +1,5 @@
-/**
- * <p>
- * License
- * </p>
- */
 package com.diary.calendar.controllers;
 
-/**
- * <p>
- * Imports
- * </p>
- */
 import com.diary.calendar.Constants;
 import com.diary.calendar.services.OperationService;
 import com.diary.calendar.services.UserService;
@@ -27,8 +17,14 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HelloController {
 
+    /**
+     * <code>UserService bean</code>
+     */
     @Autowired
     private UserService userService;
+    /**
+     * <code>OperationService bean</code>
+     */
     @Autowired
     private OperationService operationService;
 

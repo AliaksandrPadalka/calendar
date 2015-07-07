@@ -1,15 +1,5 @@
-/**
- * <p>
- * License
- * </p>
- */
 package com.diary.calendar.domains;
 
-/**
- * <p>
- * Imports
- * </p>
- */
 import com.diary.calendar.enums.UserRole;
 import java.io.Serializable;
 import java.util.List;
@@ -34,21 +24,36 @@ import javax.persistence.Table;
 @Table(name = "users")
 public class User implements Serializable {
 
+    /**
+     * <code>Id</code>
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "userId")
     private Long id;
 
+    /**
+     * <code>Name</code>
+     */
     @Column(name = "name")
     private String name;
 
+    /**
+     * <code>Phones</code>
+     */
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, targetEntity = Phone.class)
     private List<Phone> phones;
 
+    /**
+     * <code>Role</code>
+     */
     @Column(name = "userrole")
     @Enumerated(EnumType.STRING)
     private UserRole role;
 
+    /**
+     * <code>Records</code>
+     */
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, targetEntity = Record.class)
     private List<Record> records;
 
@@ -64,7 +69,7 @@ public class User implements Serializable {
     /**
      * <h3>Set id.</h3>
      *
-     * @param id
+     * @param id as Long
      */
     public final void setId(final Long id) {
         this.id = id;
@@ -82,7 +87,7 @@ public class User implements Serializable {
     /**
      * <h3>Set name.</h3>
      *
-     * @param name
+     * @param name as String
      */
     public final void setName(final String name) {
         this.name = name;
@@ -100,7 +105,7 @@ public class User implements Serializable {
     /**
      * <h3>Set phones.</h3>
      *
-     * @param phones
+     * @param phones as List&lt;Phone&gt;
      */
     public final void setPhones(final List<Phone> phones) {
         this.phones = phones;
@@ -118,7 +123,7 @@ public class User implements Serializable {
     /**
      * <h3>Set role.</h3>
      *
-     * @param role
+     * @param role as UserRole
      */
     public final void setRole(final UserRole role) {
         this.role = role;
@@ -136,7 +141,7 @@ public class User implements Serializable {
     /**
      * <h3>Set records.</h3>
      *
-     * @param records
+     * @param records as List&lt;Record&gt;
      */
     public final void setRecords(final List<Record> records) {
         this.records = records;

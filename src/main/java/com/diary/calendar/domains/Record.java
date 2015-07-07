@@ -1,15 +1,5 @@
-/**
- * <p>
- * License
- * </p>
- */
 package com.diary.calendar.domains;
 
-/**
- * <p>
- * Imports
- * </p>
- */
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -36,18 +26,30 @@ import org.joda.time.DateTime;
 @Table(name = "records")
 public class Record implements Serializable {
 
+    /**
+     * <code>Id</code>
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "recordId")
     private Long id;
 
+    /**
+     * <code>User</code>
+     */
     @JoinColumn(name = "userId")
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private User user;
 
+    /**
+     * <code>Operations</code>
+     */
     @ManyToMany(mappedBy = "records", fetch = FetchType.EAGER)
     private List<Operation> operations;
 
+    /**
+     * <code>Date</code>
+     */
     @Column(name = "date")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     private DateTime date;
@@ -64,7 +66,7 @@ public class Record implements Serializable {
     /**
      * <h3>Set id.</h3>
      *
-     * @param id
+     * @param id as Long
      */
     public final void setId(final Long id) {
         this.id = id;
@@ -82,7 +84,7 @@ public class Record implements Serializable {
     /**
      * <h3>Set user.</h3>
      *
-     * @param user
+     * @param user as User
      */
     public final void setUser(final User user) {
         this.user = user;
@@ -100,7 +102,7 @@ public class Record implements Serializable {
     /**
      * <h3>Set operations.</h3>
      *
-     * @param operations
+     * @param operations as List&lt;Operation&gt;
      */
     public final void setOperations(final List<Operation> operations) {
         this.operations = operations;
@@ -118,7 +120,7 @@ public class Record implements Serializable {
     /**
      * <h3>Set date.</h3>
      *
-     * @param date
+     * @param date as DateTime
      */
     public final void setDate(final DateTime date) {
         this.date = date;

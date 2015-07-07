@@ -1,15 +1,5 @@
-/**
- * <p>
- * License
- * </p>
- */
 package com.diary.calendar.domains;
 
-/**
- * <p>
- * Imports
- * </p>
- */
 import com.diary.calendar.enums.PhoneType;
 import java.io.Serializable;
 import javax.persistence.CascadeType;
@@ -35,21 +25,36 @@ import javax.persistence.Table;
 @Table(name = "phones")
 public class Phone implements Serializable {
 
+    /**
+     * <code>Id</code>
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "phoneId")
     private Long id;
 
+    /**
+     * <code>Type</code>
+     */
     @Column(name = "type")
     @Enumerated(EnumType.STRING)
     private PhoneType type;
 
+    /**
+     * <code>Code</code>
+     */
     @Column(name = "code")
     private String code;
 
+    /**
+     * <code>Number</code>
+     */
     @Column(name = "number")
     private String number;
 
+    /**
+     * <code>User</code>
+     */
     @JoinColumn(name = "userId")
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private User user;
@@ -66,7 +71,7 @@ public class Phone implements Serializable {
     /**
      * <h3>Set id.</h3>
      *
-     * @param id
+     * @param id as Long
      */
     public final void setId(final Long id) {
         this.id = id;
@@ -84,7 +89,7 @@ public class Phone implements Serializable {
     /**
      * <h3>Set type.</h3>
      *
-     * @param type
+     * @param type as PhoneType
      */
     public final void setType(final PhoneType type) {
         this.type = type;
@@ -102,7 +107,7 @@ public class Phone implements Serializable {
     /**
      * <h3>Set code.</h3>
      *
-     * @param code
+     * @param code as String
      */
     public final void setCode(final String code) {
         this.code = code;
@@ -120,7 +125,7 @@ public class Phone implements Serializable {
     /**
      * <h3>Set number.</h3>
      *
-     * @param number
+     * @param number as String
      */
     public final void setNumber(final String number) {
         this.number = number;
@@ -138,7 +143,7 @@ public class Phone implements Serializable {
     /**
      * <h3>Set user.</h3>
      *
-     * @param user
+     * @param user as User
      */
     public final void setUser(final User user) {
         this.user = user;

@@ -1,15 +1,5 @@
-/**
- * <p>
- * License
- * </p>
- */
 package com.diary.calendar.services.impl;
 
-/**
- * <p>
- * Imports
- * </p>
- */
 import com.diary.calendar.Constants;
 import com.diary.calendar.domains.User;
 import com.diary.calendar.enums.UserRole;
@@ -32,13 +22,16 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
  */
 public class UserSecurityServiceImpl implements UserDetailsService {
 
+    /**
+     * <code>UserRepository bean</code>
+     */
     @Autowired
     private UserRepository repository;
 
     /**
      * <h3>Get {@link UserDetails} <code>user</code>.</h3>
      *
-     * @param username
+     * @param username as String
      * @return userDetails
      * @throws UsernameNotFoundException
      */
@@ -65,6 +58,12 @@ public class UserSecurityServiceImpl implements UserDetailsService {
         return userDetails;
     }
 
+    /**
+     * <h3>Utility method</h3>
+     *
+     * @param role as UserRole
+     * @return authList
+     */
     private Collection<? extends GrantedAuthority> getAuthorities(final UserRole role) {
         List<SimpleGrantedAuthority> authList = new ArrayList<>();
         authList.add(new SimpleGrantedAuthority(Constants.Access.ANONIMOUS));
