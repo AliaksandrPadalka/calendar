@@ -112,7 +112,7 @@ public class Operation implements Serializable {
 
     /**
      *
-     * @return <code>List<code><Record></code></code> records
+     * @return
      */
     public List<Record> getRecord() {
         return records;
