@@ -40,6 +40,8 @@
         <maven.dependency.version>2.10</maven.dependency.version>
         <liquibase.maven.version>3.3.5</liquibase.maven.version>
         <maven.checkstyle.version>2.15</maven.checkstyle.version>
+        <maven.pmd.version>3.4</maven.pmd.version>
+        <findbugs.maven.version>3.0.1</findbugs.maven.version>
     </properties>
 
     <profiles>
@@ -253,25 +255,142 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>${maven.checkstyle.version}</version>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.4</version>
                 <executions>
                     <execution>
-                        <phase>process-sources</phase>
+                        <phase>prepare-package</phase>
                         <goals>
-                            <goal>check</goal>
+                            <goal>attach-descriptor</goal>
                         </goals>
                     </execution>
                 </executions>
                 <configuration>
+                    <reportPlugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-checkstyle-plugin</artifactId>
+                            <version>${maven.checkstyle.version}</version>
+                            <configuration>
+                                <configLocation>${basedir}/config/checkstyle.xml</configLocation>
+                                <excludes>**/package-info.java</excludes>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-pmd-plugin</artifactId>
+                            <version>${maven.pmd.version}</version>
+                            <configuration>
+                                <rulesets>
+                                    <ruleset>${basedir}/config/pmd.xml</ruleset>
+                                </rulesets>
+                                <skipEmptyReport>false</skipEmptyReport>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.codehaus.mojo</groupId>
+                            <artifactId>findbugs-maven-plugin</artifactId>
+                            <version>${findbugs.maven.version}</version>
+                            <configuration>
+                                <outputDirectory>${project.build.directory}/findbugs</outputDirectory>
+                                <xmlOutput>true</xmlOutput>
+                                <findbugsXmlWithMessages>true</findbugsXmlWithMessages>
+                                <xmlOutputDirectory>${project.build.directory}/findbugs</xmlOutputDirectory>
+                                <failOnError>false</failOnError>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.codehaus.mojo</groupId>
+                            <artifactId>cobertura-maven-plugin</artifactId>
+                            <version>2.7</version>
+                            <configuration>
+                                <formats>
+                                    <format>html</format>
+                                    <format>xml</format>
+                                </formats>
+                            </configuration>
+                        </plugin>
+                    </reportPlugins>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${maven.checkstyle.version}</version>
+                <configuration>
                     <configLocation>${basedir}/config/checkstyle.xml</configLocation>
                     <excludes>**/package-info.java</excludes>
                 </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>checkstyle</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
-
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>${maven.pmd.version}</version>
+                <configuration>
+                    <rulesets>
+                        <ruleset>${basedir}/config/pmd.xml</ruleset>
+                    </rulesets>
+                    <skipEmptyReport>false</skipEmptyReport>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>cpd</goal>
+                            <goal>pmd</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>${findbugs.maven.version}</version>
+                <configuration>
+                    <outputDirectory>${project.build.directory}/findbugs</outputDirectory>
+                    <xmlOutput>true</xmlOutput>
+                    <findbugsXmlWithMessages>true</findbugsXmlWithMessages>
+                    <xmlOutputDirectory>${project.build.directory}/findbugs</xmlOutputDirectory>
+                    <failOnError>false</failOnError>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>findbugs</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <version>2.7</version>
+                <configuration>
+                    <formats>
+                        <format>html</format>
+                        <format>xml</format>
+                    </formats>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>cobertura</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
