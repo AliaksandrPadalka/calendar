@@ -138,7 +138,7 @@ public class Operation implements Serializable {
      *
      * @return records
      */
-    public final List<Record> getRecord() {
+    public final List<Record> getRecords() {
         return records;
     }
 
@@ -147,7 +147,7 @@ public class Operation implements Serializable {
      *
      * @param records as List&lt;Record&gt;
      */
-    public final void setRecord(final List<Record> records) {
+    public final void setRecords(final List<Record> records) {
         this.records = records;
     }
 
