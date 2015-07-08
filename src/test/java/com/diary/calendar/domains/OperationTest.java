@@ -88,14 +88,14 @@ public class OperationTest {
     }
 
     @Test
-    public void testGetRecord() {
+    public void testGetRecords() {
         List<Record> records = operation.getRecords();
         assertThat(records).isNotNull();
         assertThat(records.size()).isEqualTo(RECORDS_SIZE);
     }
 
     @Test
-    public void testSetRecord() {
+    public void testSetRecords() {
         List<Record> records = operation.getRecords();
         assertThat(records).isNotNull();
         assertThat(records.size()).isEqualTo(RECORDS_SIZE);

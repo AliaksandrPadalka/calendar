@@ -10,7 +10,7 @@ public final class Constants {
     /**
      * <h3>Constants of user access</h3>
      */
-    public static final class Access {
+    public final class Access {
 
         /**
          * <h3>Constant ANONIMOUS</h3>
@@ -28,7 +28,7 @@ public final class Constants {
     /**
      * <h3>Constants of page names</h3>
      */
-    public static final class Pages {
+    public final class Pages {
 
         /**
          * <h3>Constant URL_PAGE_HELLO</h3>
@@ -58,7 +58,7 @@ public final class Constants {
     /**
      * <h3>Constants of time</h3>
      */
-    public static final class Time {
+    public final class Time {
 
         /**
          * <h3>Constant HOUR_0</h3>
@@ -67,7 +67,7 @@ public final class Constants {
         /**
          * <h3>Constant HOUR_23</h3>
          */
-        public static final int HOUR_23 = 0;
+        public static final int HOUR_23 = 23;
 
         /**
          * <h3>Constant MINUTE_0</h3>
@@ -92,12 +92,51 @@ public final class Constants {
          */
         private Time() {
         }
+
     }
 
     /**
      * <h3>Constructor.</h3>
      */
     private Constants() {
+        access = new Access();
+        pages = new Pages();
+        time = new Time();
     }
+
+    public static Constants getInstance() {
+        return new Constants();
+    }
+
+    /**
+     * Get instance Access class
+     *
+     * @return access
+     */
+    public Access getInstanceAccess() {
+        return access;
+    }
+
+    /**
+     * Get instance Pages class
+     *
+     * @return pages
+     */
+    public Pages getInstancePages() {
+        return pages;
+    }
+
+    /**
+     * Get instance Time class
+     *
+     * @return time
+     */
+    public Time getInstanceTime() {
+        return time;
+    }
+
+    private Access access;
+    private Pages pages;
+    private Time time;
 
 }
