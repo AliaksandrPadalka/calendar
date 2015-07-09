@@ -104,6 +104,11 @@ public final class Constants {
         time = new Time();
     }
 
+    /**
+     * Get instance Constants class
+     *
+     * @return time
+     */
     public static Constants getInstance() {
         return new Constants();
     }
@@ -135,8 +140,17 @@ public final class Constants {
         return time;
     }
 
+    /**
+     * instance Access
+     */
     private Access access;
+    /**
+     * instance Pages
+     */
     private Pages pages;
+    /**
+     * instance Time
+     */
     private Time time;
 
 }
