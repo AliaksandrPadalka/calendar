@@ -72,10 +72,10 @@ public class OperationServiceImplTest {
 
     @Test
     public void testGetOperationByOperationId() {
-        Operation gettingOperation = service.getOperationByOperationId(ID_1);
-        assertThat(gettingOperation).isNotNull();
-        assertThat(gettingOperation.getId()).isEqualTo(ID_1);
-        assertThat(gettingOperation.getName()).isEqualTo(NAME);
+        Operation oper = service.getOperationByOperationId(ID_1);
+        assertThat(oper).isNotNull();
+        assertThat(oper.getId()).isEqualTo(ID_1);
+        assertThat(oper.getName()).isEqualTo(NAME);
     }
 
     @Test
