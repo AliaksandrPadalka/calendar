@@ -8,6 +8,64 @@ package com.diary.calendar;
 public final class Constants {
 
     /**
+     * instance Access
+     */
+    private final Access access;
+    /**
+     * instance Pages
+     */
+    private final Pages pages;
+    /**
+     * instance Time
+     */
+    private final Time time;
+
+    /**
+     * <h3>Constructor.</h3>
+     */
+    private Constants() {
+        access = new Access();
+        pages = new Pages();
+        time = new Time();
+    }
+
+    /**
+     * Get instance Constants class
+     *
+     * @return time
+     */
+    public static Constants getInstance() {
+        return new Constants();
+    }
+
+    /**
+     * Get instance Access class
+     *
+     * @return access
+     */
+    public Access getInstanceAccess() {
+        return access;
+    }
+
+    /**
+     * Get instance Pages class
+     *
+     * @return pages
+     */
+    public Pages getInstancePages() {
+        return pages;
+    }
+
+    /**
+     * Get instance Time class
+     *
+     * @return time
+     */
+    public Time getInstanceTime() {
+        return time;
+    }
+
+    /**
      * <h3>Constants of user access</h3>
      */
     public final class Access {
@@ -94,63 +152,5 @@ public final class Constants {
         }
 
     }
-
-    /**
-     * <h3>Constructor.</h3>
-     */
-    private Constants() {
-        access = new Access();
-        pages = new Pages();
-        time = new Time();
-    }
-
-    /**
-     * Get instance Constants class
-     *
-     * @return time
-     */
-    public static Constants getInstance() {
-        return new Constants();
-    }
-
-    /**
-     * Get instance Access class
-     *
-     * @return access
-     */
-    public Access getInstanceAccess() {
-        return access;
-    }
-
-    /**
-     * Get instance Pages class
-     *
-     * @return pages
-     */
-    public Pages getInstancePages() {
-        return pages;
-    }
-
-    /**
-     * Get instance Time class
-     *
-     * @return time
-     */
-    public Time getInstanceTime() {
-        return time;
-    }
-
-    /**
-     * instance Access
-     */
-    private Access access;
-    /**
-     * instance Pages
-     */
-    private Pages pages;
-    /**
-     * instance Time
-     */
-    private Time time;
 
 }

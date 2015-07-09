@@ -48,11 +48,15 @@ public class UserSecurityServiceImpl implements UserDetailsService {
         users.addAll((Collection<? extends User>) repository.findAll());
 
         for (User user : users) {
-            if (username.equalsIgnoreCase(user.getName())) {
+            if (username.equals(user.getName())) {
                 userDetails = new org.springframework.security.core.userdetails.User(
                         user.getName(), StringUtils.EMPTY, true, true, true, true, getAuthorities(user.getRole()));
                 break;
             }
+        }
+
+        if (userDetails == null) {
+            throw new UsernameNotFoundException(String.format("Username \'%s\' not found.", username));
         }
 
         return userDetails;
