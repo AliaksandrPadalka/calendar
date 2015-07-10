@@ -12,7 +12,7 @@
     <properties>
         <!-- project properies -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.7</java.version>
+        <jdk.version>1.7</jdk.version>
         <assembly-directory>${basedir}</assembly-directory>
 
         <!-- Dependencies versions -->
@@ -41,6 +41,7 @@
         <!-- Plugins versions -->
         <maven.compiler.version>2.3.2</maven.compiler.version>
         <maven.javadoc.version>2.10.3</maven.javadoc.version>
+        <maven.source.version>2.4</maven.source.version>
         <maven.war.version>2.6</maven.war.version>
         <maven.dependency.version>2.10</maven.dependency.version>
         <liquibase.maven.version>3.3.5</liquibase.maven.version>
@@ -62,6 +63,7 @@
                 <downloadJavadocs>true</downloadJavadocs>
             </properties>
         </profile>
+
         <profile>
             <id>prod</id>
             <activation>
@@ -201,8 +203,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven.compiler.version}</version>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -231,6 +233,27 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <finalName>${project.name}-${project.version}</finalName>
+                    <attach>true</attach>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven.source.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-source</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <finalName>${project.name}-${project.version}</finalName>
+                    <attach>false</attach>
+                </configuration>
             </plugin>
 
             <!-- Liquibase plugins -->

@@ -104,6 +104,10 @@ public final class Constants {
          * <h3>Constant URL_PAGE_ERROR</h3>
          */
         public static final String URL_PAGE_ERROR = "error";
+        /**
+         * <h3>Constant URL_PAGE_LOGIN</h3>
+         */
+        public static final String URL_PAGE_LOGIN = "login";
 
         /**
          * <h3>Constructor.</h3>

@@ -31,10 +31,22 @@ public class LoginController {
      *
      * @return model
      */
-    @RequestMapping(value = {"/denied", "/login", "/logout"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/denied", "/logout"}, method = RequestMethod.GET)
     public final ModelAndView showDeniedPage() {
         ModelAndView model = new ModelAndView();
         model.setViewName(Constants.Pages.URL_PAGE_403);
+        return model;
+    }
+
+    /**
+     * <h3>Return login view</h3>
+     *
+     * @return model
+     */
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public final ModelAndView showLoginPage() {
+        ModelAndView model = new ModelAndView();
+        model.setViewName(Constants.Pages.URL_PAGE_LOGIN);
         return model;
     }
 

@@ -19,11 +19,26 @@
 }
 
 #login-box {
-    width: 300px;
+    /*width: 300px;*/
     padding: 20px;
     margin: 100px auto;
     background: #fff;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border: 1px solid #000;
+}
+
+.brandimg {
+    margin-top: -5px;
+    height: 150%;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+.row-specified{
+    margin-right: 0px !important;
+    margin-left: 0px !important;
 }

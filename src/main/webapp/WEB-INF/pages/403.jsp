@@ -16,11 +16,11 @@
     </head>
     <body>
         <div class="container-fluid">
-            <div class="row">
+            <div class="row-fluid">
                 <%@ include file="header.jsp" %>
             </div>
 
-            <div class="row">
+            <div class="row-fluid">
                 <h1>HTTP Status 403 - Access is denied</h1>
                 <c:choose>
                     <c:when test="${empty username}">
@@ -32,7 +32,7 @@
                     </c:choose>
             </div>
 
-            <div class="row">
+            <div class="row-fluid">
                 <%@ include file="footer.jsp" %>
             </div>
         </div>
