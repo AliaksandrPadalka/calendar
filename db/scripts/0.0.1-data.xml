@@ -62,4 +62,11 @@
         </insert>
     </changeSet>
 
+    <changeSet id="20150713-2" author="aliaksandr_padalka">
+        <update tableName="users">
+            <column name="email" value="test@test.com"/>
+            <where>name IS NOT NULL</where>
+        </update>
+    </changeSet>
+
 </databaseChangeLog>

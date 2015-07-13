@@ -37,13 +37,13 @@
                             <div class="form-group">
                                 <label for="inputEmail" class="col-lg-2 control-label">Email</label>
                                 <div class="col-lg-10">
-                                    <input type="text" class="form-control" id="inputEmail" placeholder="Email" name="username" />
+                                    <form:input type="text" class="form-control" id="inputEmail" placeholder="Email" name="username" path="email"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputPassword" class="col-lg-2 control-label">Password</label>
                                 <div class="col-lg-10">
-                                    <input type="password" class="form-control" id="inputPassword" placeholder="Password" />
+                                    <form:input type="password" class="form-control" id="inputPassword" placeholder="Password" path="password"/>
                                 </div>
                             </div>
                             <div class="form-group">

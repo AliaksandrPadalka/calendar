@@ -33,4 +33,10 @@ public class LoginControllerTest {
         assertThat(model.getViewName()).isEqualTo(Constants.Pages.URL_PAGE_403);
     }
 
+    @Test
+    public void testShowLoginPage() {
+        ModelAndView model = controller.showLoginPage();
+        assertThat(model.getViewName()).isEqualTo(Constants.Pages.URL_PAGE_LOGIN);
+    }
+
 }

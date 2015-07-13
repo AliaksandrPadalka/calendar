@@ -21,6 +21,10 @@ public class UserTest {
     private static final Long ID_NEW = 2L;
     private static final String NAME = "name";
     private static final String NAME_NEW = "new name";
+    private static final String PASSWORD = "pass";
+    private static final String PASSWORD_NEW = "new pass";
+    private static final String EMAIL = "email";
+    private static final String EMAIL_NEW = "new email";
     private static final int PHONES_SIZE = 0;
     private static final int PHONES_SIZE_NEW = 2;
     private static final int RECORDS_SIZE = 0;
@@ -38,6 +42,8 @@ public class UserTest {
         user.setPhones(new ArrayList<Phone>());
         user.setRecords(new ArrayList<Record>());
         user.setRole(USERROLE);
+        user.setPassword(PASSWORD);
+        user.setEmail(EMAIL);
     }
 
     @Test
@@ -114,6 +120,30 @@ public class UserTest {
         records = user.getRecords();
         assertThat(records).isNotNull();
         assertThat(records.size()).isEqualTo(RECORDS_SIZE_NEW);
+    }
+
+    @Test
+    public void testGetPassword() {
+        assertThat(user.getPassword()).isEqualTo(PASSWORD);
+    }
+
+    @Test
+    public void testSetPassword() {
+        assertThat(user.getPassword()).isEqualTo(PASSWORD);
+        user.setPassword(PASSWORD_NEW);
+        assertThat(user.getPassword()).isEqualTo(PASSWORD_NEW);
+    }
+
+    @Test
+    public void testGetEmail() {
+        assertThat(user.getEmail()).isEqualTo(EMAIL);
+    }
+
+    @Test
+    public void testSetEmail() {
+        assertThat(user.getEmail()).isEqualTo(EMAIL);
+        user.setEmail(EMAIL_NEW);
+        assertThat(user.getEmail()).isEqualTo(EMAIL_NEW);
     }
 
 }

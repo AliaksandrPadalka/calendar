@@ -58,6 +58,18 @@ public class User implements Serializable {
     private List<Record> records;
 
     /**
+     * <code>Password</code>
+     */
+    @Column(name = "password")
+    private String password;
+
+    /**
+     * <code>EMail</code>
+     */
+    @Column(name = "email")
+    private String email;
+
+    /**
      * <h3>Get id.</h3>
      *
      * @return id
@@ -145,6 +157,42 @@ public class User implements Serializable {
      */
     public final void setRecords(final List<Record> records) {
         this.records = records;
+    }
+
+    /**
+     * <h3>Get password.</h3>
+     *
+     * @return password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * <h3>Set password.</h3>
+     *
+     * @param password as String
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
+     * <h3>Get email.</h3>
+     *
+     * @return email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * <h3>Set email.</h3>
+     *
+     * @param email as String
+     */
+    public void setEmail(String email) {
+        this.email = email;
     }
 
 }

@@ -28,7 +28,7 @@
                 <div class="form-group">
                     <a href="${mainurl}login" class="btn btn-info btn-md glyphicon glyphicon-user" role="button"> Sign up</a>
                     or
-                    <a href="${mainurl}login" class="btn btn-info btn-md glyphicon glyphicon-log-in" role="button"> Register</a>
+                    <a href="${mainurl}register" class="btn btn-info btn-md glyphicon glyphicon-log-in" role="button"> Register</a>
                 </div>
             </form>
         </div>

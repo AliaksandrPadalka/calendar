@@ -79,4 +79,11 @@
                                  initiallyDeferred="false" referencedColumnNames="userid" referencedTableName="users"/>
     </changeSet>
 
+    <changeSet id="20150713-1" author="aliaksandr_padalka">
+        <addColumn tableName="users">
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="email" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+
 </databaseChangeLog>
