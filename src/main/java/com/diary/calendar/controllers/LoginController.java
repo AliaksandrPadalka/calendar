@@ -1,6 +1,7 @@
 package com.diary.calendar.controllers;
 
 import com.diary.calendar.Constants;
+import com.diary.calendar.domains.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -46,6 +47,7 @@ public class LoginController {
     @RequestMapping(value = {"/login", "/register"}, method = RequestMethod.GET)
     public final ModelAndView showLoginPage() {
         ModelAndView model = new ModelAndView();
+        model.addObject("user", new User());
         model.setViewName(Constants.Pages.URL_PAGE_LOGIN);
         return model;
     }
