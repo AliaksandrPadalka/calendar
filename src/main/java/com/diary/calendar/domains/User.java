@@ -164,7 +164,7 @@ public class User implements Serializable {
      *
      * @return password
      */
-    public String getPassword() {
+    public final String getPassword() {
         return password;
     }
 
@@ -173,7 +173,7 @@ public class User implements Serializable {
      *
      * @param password as String
      */
-    public void setPassword(String password) {
+    public final void setPassword(final String password) {
         this.password = password;
     }
 
@@ -182,7 +182,7 @@ public class User implements Serializable {
      *
      * @return email
      */
-    public String getEmail() {
+    public final String getEmail() {
         return email;
     }
 
@@ -191,7 +191,7 @@ public class User implements Serializable {
      *
      * @param email as String
      */
-    public void setEmail(String email) {
+    public final void setEmail(final String email) {
         this.email = email;
     }
 
